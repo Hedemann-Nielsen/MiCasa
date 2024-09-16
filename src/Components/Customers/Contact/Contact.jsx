@@ -21,13 +21,13 @@ export const Contact = () => {
 	const { supabase } = useSupabase();
 	const [message, setMessage] = useState(""); // Til fejlhåndtering og beskeder
 
-	const updateContactMessage = async ({ name, email, message }) => {
+	const updateContactMessage = async ({ name, email, employee, message }) => {
 		try {
 			if (supabase) {
 				const { data, error } = await supabase
-					.from("messages") // Navn på tabellen der skal indsættes i
-					.insert([{ name, email, message }]); // Indsætter beskeden i tabellen
-
+					.from("contact_messages") // Navn på tabellen der skal indsættes i
+					.insert([{ name, email, employee_id: employee, message }]) // Indsætter beskeden i tabellen
+					.select("* employees(firstname, lastname)");
 				if (error) {
 					//fejl håndtering, hvis der ikke kunne indsættes data i databasen
 					console.error(
@@ -46,20 +46,28 @@ export const Contact = () => {
 		}
 	};
 
-	const handleSendMessage = async (data) => {
+	const handleSendMessage = async (formData) => {
 		try {
 			// Kalder updateContactMessage med data fra formularen
-			const response = await updateContactMessage(data);
+			const response = await updateContactMessage(formData);
 
 			if (response.success) {
+				// Find medarbejder i employees arrayet baseret på ID
+				const selectedEmployee = employees.find(
+					(employee) => employee.id === parseInt(formData.employee)
+				);
+
 				// Nulstil formen efter succesfuld indsendelse
 				reset();
+
 				// sender en alert boks til brugeren om at meddelelsen er sendt.
-				alert("Beskeden er sendt!");
+				alert(`Din besked:
+"${formData.message}"
+er sendt til ${selectedEmployee.firstname} ${selectedEmployee.lastname}.
+Du vil modtage svar på ${formData.email} hurtigst muligt.`);
 			} else {
 				setMessage(response.message);
 			}
-			// Håndterer eventuelle fejl, der opstår under kaldet til
 		} catch (error) {
 			console.error("Der opstod en fejl:", error.message);
 			alert("Der opstod en fejl. Prøv igen."); // Opdater beskeden
@@ -95,13 +103,12 @@ export const Contact = () => {
 								//validering af navn feltet, det skal være udfyldt, hvis ikke kommer der en besked
 								{...register("name", { required: "Navn er påkrævet" })}
 							/>
-							{/* et element som kun vises hvis der skal skrives en fejl meddelse  */}
-							{errors.name && (
-								<span className={globalStyle.errorMessage}>
-									{errors.name.message}
-								</span>
-							)}
 						</div>
+						{errors.name && (
+							<span className={globalStyle.errorMessage}>
+								<p>{errors.name.message}</p>
+							</span>
+						)}
 						<div className={style.inputWrapper}>
 							<label htmlFor="email">
 								Email:
@@ -125,13 +132,12 @@ export const Contact = () => {
 								})}
 							/>
 							{/* et element som kun vises hvis der skal skrives en fejl meddelse  */}
-
-							{errors.email && (
-								<span className={globalStyle.errorMessage}>
-									{errors.email.message}
-								</span>
-							)}
 						</div>
+						{errors.email && (
+							<span className={globalStyle.errorMessage}>
+								<p>{errors.email.message}</p>
+							</span>
+						)}
 						<div className={style.inputWrapper}>
 							<label htmlFor="employee">
 								Medarbejder:
@@ -139,20 +145,29 @@ export const Contact = () => {
 									<FaStarOfLife />
 								</span>
 							</label>
-							<select name="employees">
+							<select
+								name="employees"
+								{...register("employee", {
+									required: "Du skal vælge en medarbejder",
+								})}>
 								<option value="" disabled selected>
 									Vælg en medarbejder
 								</option>
 								{employees &&
 									employees.map((employee) => {
 										return (
-											<option value="emplyee" key={employee.id}>
+											<option value={employee.id} key={employee.id}>
 												{employee.firstname} {employee.lastname}
 											</option>
 										);
 									})}
 							</select>
 						</div>
+						{errors.employee && (
+							<span className={globalStyle.errorMessage}>
+								<p>{errors.employee.message}</p>
+							</span>
+						)}
 						<div className={style.inputWrapper}>
 							<label htmlFor="message">
 								Besked:{" "}
@@ -167,12 +182,12 @@ export const Contact = () => {
 								}`}
 								{...register("message", { required: "Besked er påkrævet" })}
 							/>
-							{errors.message && (
-								<span className={globalStyle.errorMessage}>
-									{errors.message.message}
-								</span>
-							)}
 						</div>
+						{errors.message && (
+							<span className={globalStyle.errorMessage}>
+								<p>{errors.message.message}</p>
+							</span>
+						)}
 
 						<div className={style.buttonWrapper}>
 							<button type="submit" className={globalStyle.styledBtn}>
