@@ -1,0 +1,47 @@
+@use "../../../Styles/Helpers/Mixinx" as *;
+@use "../../../Styles/Helpers/variables" as *;
+
+.card {
+	width: 384px;
+	// height: 469px;
+	border-radius: 8px;
+	background-color: $BG-col;
+	box-shadow: 0px 4px 10px 0px #00000040;
+
+	figure {
+		margin: 16px;
+
+		img {
+			margin: auto;
+			padding-top: 16px;
+			width: 100%;
+			border-radius: 8px 8px 0 0;
+		}
+		figcaption {
+			.estateHighlights {
+				@include text;
+				display: flex;
+				justify-content: space-between;
+				.address {
+					@include subtitle3;
+				}
+				.energyLabel {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 26px;
+					height: 28px;
+					background-color: #14c451;
+					color: #fff;
+				}
+			}
+			.estatePrice {
+				@include subtitle2;
+				display: flex;
+				justify-content: end;
+				margin-top: 17px;
+				padding-bottom: 17px;
+			}
+		}
+	}
+}

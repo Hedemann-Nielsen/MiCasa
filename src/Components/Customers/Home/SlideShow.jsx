@@ -12,6 +12,7 @@ const images = [slide1, slide2, slide3, slide4, slide5, slide6];
 export const SlideShow = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
+	//Funktion til at få billederne til at skifte får hver 10 sekunder
 	useEffect(() => {
 		const interval = setInterval(() => {
 			setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
