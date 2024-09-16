@@ -1,9 +1,14 @@
-$color-darkgrey: #323540;
-$color-bluegrey: #5f657b;
-$color-yellow: #d8a05f;
-$color-greengold: #b7a968;
-$color-lightgray: #f5f5f0;
-$color-background: #ffffff;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-$color-error: #ff0000;
-$color-succes: #339900;
+$BLACK-col: #1d1e2c;
+$GRAY-col: #59656f;
+$ROSE-col: #ac9fbb;
+$PINK-col: #ddbdd5;
+$BLUSH-col: #f7ebec;
+
+$BG-col: #ffffff;
+
+$err-col: #ff0000;
+$succ-col: #339900;
+
+$font: "Poppins", sans-serif;

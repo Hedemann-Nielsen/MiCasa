@@ -2,26 +2,35 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 @mixin title {
-	font-size: 36px;
-	font-weight: 700;
-	text-transform: capitalize;
-	font-family: "Open Sans", sans-serif;
-	color: $color-darkgrey;
+	font-family: "Poppins", sans-serif;
+	font-size: 32px;
+	font-weight: 500;
+	line-height: 48px;
+	color: $BLACK-col;
 }
 
-@mixin subtitle {
-	font-size: 28px;
-	text-transform: capitalize;
-	font-family: "Open Sans", sans-serif;
-	color: $color-darkgrey;
-	font-weight: 700;
+@mixin subtitle2 {
+	font-family: "Poppins", sans-serif;
+	font-size: 24px;
+	font-weight: 500;
+	line-height: 36px;
+	color: $BLACK-col;
+}
+
+@mixin subtitle3 {
+	font-family: "Poppins", sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 30px;
+	color: $GRAY-col;
 }
 
 @mixin text {
-	font-size: 18px;
-	font-family: "Open Sans", sans-serif;
-
-	color: $color-darkgrey;
+	font-size: 16px;
+	font-family: "Poppins", sans-serif;
+	font-weight: 400;
+	line-height: 24px;
+	color: $BLACK-col;
 }
 
 //fjerne alt styling fra en knap
