@@ -1,0 +1,15 @@
+@use "../../../Styles/Helpers/variables" as *;
+.InnerWrapper {
+	display: flex;
+	margin: 0 12px;
+	background-color: $color-background;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+/* PC*/
+@media (min-width: 992px) {
+	.InnerWrapper {
+		margin: 0 16px;
+	}
+}

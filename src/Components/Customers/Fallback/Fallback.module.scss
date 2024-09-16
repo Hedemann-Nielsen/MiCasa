@@ -1,0 +1,36 @@
+@use "../../../Styles//Helpers/variables" as *;
+
+.container {
+	position: relative;
+	height: 60vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	.background {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1;
+		h1 {
+			font-size: 500px;
+			font-weight: bold;
+			color: rgba(0, 0, 0, 0.03);
+		}
+	}
+	.textWrapper {
+		position: relative;
+		z-index: 2;
+		padding: 2rem;
+		border-radius: 10px;
+		width: 80%;
+
+		h2 {
+			font-size: 50px;
+		}
+		p {
+			padding: 20px;
+		}
+	}
+}

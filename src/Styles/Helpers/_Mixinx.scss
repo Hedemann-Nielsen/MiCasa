@@ -1,0 +1,37 @@
+@use "./variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
+@mixin title {
+	font-size: 36px;
+	font-weight: 700;
+	text-transform: capitalize;
+	font-family: "Open Sans", sans-serif;
+	color: $color-darkgrey;
+}
+
+@mixin subtitle {
+	font-size: 28px;
+	text-transform: capitalize;
+	font-family: "Open Sans", sans-serif;
+	color: $color-darkgrey;
+	font-weight: 700;
+}
+
+@mixin text {
+	font-size: 18px;
+	font-family: "Open Sans", sans-serif;
+
+	color: $color-darkgrey;
+}
+
+//fjerne alt styling fra en knap
+@mixin unstyledBtn {
+	background-color: transparent;
+	border: none;
+	margin: 0;
+	padding: 0;
+	text-align: inherit;
+	font: inherit;
+	border-radius: 0;
+	appearance: none;
+}
