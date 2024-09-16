@@ -13,7 +13,7 @@
 		position: absolute;
 		width: 80%;
 		height: fit-content;
-		background-color: $color-darkgrey;
+		background-color: $ROSE-col;
 		text-align: center;
 		padding: 25px;
 		bottom: 10px;
@@ -41,12 +41,11 @@
 			text-transform: capitalize;
 			font-family: "Poppins", sans-serif;
 			text-align: center;
-			color: $color-darkgrey;
-			color: $BG-col;
+			color: $BLACK-col;
 		}
 		p {
 			@include text;
-			color: $BG-col;
+			color: $BLACK-col;
 			padding: 0 0 20px 0;
 		}
 		button {

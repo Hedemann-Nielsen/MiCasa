@@ -1,0 +1,72 @@
+@use "../../../Styles/Helpers/Mixinx" as *;
+@use "../../../Styles/Helpers/variables" as *;
+.header {
+	width: 100%;
+	background-image: url(../../../assets/Header_Canvas.png);
+	// background-attachment: fixed;
+	background-size: contain;
+	background-repeat: no-repeat;
+	min-height: 103.5px;
+
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+
+	img {
+		margin: 32px;
+		width: 269px;
+		height: 105px;
+	}
+	nav {
+		ul {
+			margin-top: 32px;
+			display: flex;
+			list-style: none;
+			align-items: center;
+			padding-right: 32px;
+			li {
+				cursor: pointer;
+				padding: 0 16px;
+				a {
+					text-transform: capitalize;
+					color: $BG-col !important;
+					@include subtitle3;
+					&:hover {
+						color: $ROSE-col !important;
+					}
+				}
+
+				.activeLink {
+					color: $ROSE-col !important;
+				}
+				input {
+					width: calc(172px - 24px);
+					height: 24px;
+					font-size: 12px;
+					font-weight: 400;
+					line-height: 16.34px;
+					font-family: $font;
+					padding: 6px 16px;
+
+					border-radius: 4px 0 0 4px;
+					border: 1px solid #ccc;
+					font-family: "Poppins", sans-serif;
+				}
+				.FaSearchWrapper {
+					height: 24px;
+					width: 24px;
+					background-color: $GRAY-col;
+					border-radius: 0 4px 4px 0;
+
+					.FaSearch {
+						color: #fff;
+						font-size: 12px;
+					}
+				}
+			}
+			.searchWrapper {
+				display: flex;
+			}
+		}
+	}
+}

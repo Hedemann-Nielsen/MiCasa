@@ -1,11 +1,11 @@
-import { Layout } from "../Components/Layout/Layout";
 import { PageWrapper } from "../Components/Common/Wrappers/PageWrapper";
+import { Search } from "../Components/Customers/Search/Search";
 
 export const SearchPage = () => {
 	return (
 		<>
-			<PageWrapper title={"Søg"}>
-				<Layout />
+			<PageWrapper title={"Søgning"}>
+				<Search />
 			</PageWrapper>
 		</>
 	);

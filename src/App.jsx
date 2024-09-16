@@ -6,10 +6,7 @@ import "./App.css";
 function App() {
 	return (
 		<>
-			{/* Bruges til CreateBrowserRouyter uden loader */}
-			<RouterProvider router={routes} />;
-			{/* Bruges til CreateBrowserRouter med Loader */}
-			{/* <div>{loading ? <Loader /> : <RouterProvider router={routes} />}</div>; */}
+			<RouterProvider router={routes} />
 		</>
 	);
 }

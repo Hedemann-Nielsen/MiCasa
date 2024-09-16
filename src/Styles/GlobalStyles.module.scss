@@ -126,7 +126,7 @@ button {
 		animation-timing-function: ease-out;
 		animation-duration: 300ms;
 		background: $PINK-col;
-		transform: scale(0.7);
+		transform: scale(1.2);
 	}
 }
 
@@ -146,10 +146,7 @@ button {
 .input {
 	width: 317px;
 	height: 32px;
-	top: 239px;
-	left: 814px;
 	padding: 6px 16px;
-	gap: 0px;
 	border-radius: 4px;
 	border: 1px solid #ccc;
 	font-family: "Poppins", sans-serif;
@@ -158,7 +155,7 @@ button {
 	line-height: 21px;
 
 	&:active {
-		border: 1px solid $GREY-col !important;
+		border: 1px solid $GRAY-col !important;
 	}
 }
 
@@ -178,6 +175,7 @@ button {
 .pageWrapper {
 	height: 100%;
 	margin: 0 127px 50px 127px;
+	width: 100%;
 
 	h1 {
 		@include title;
