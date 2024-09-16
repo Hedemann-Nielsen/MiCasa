@@ -4,10 +4,12 @@ import { Layout } from "../Layout/Layout.jsx";
 import { HomePage } from "../../Pages/HomePage.jsx";
 import { FallbackPage } from "../../Pages/FallbackPag.jsx";
 import { ContactPage } from "../../Pages/ContactPage.jsx";
-import { LoginPage } from "../../Pages/LoginPage.jsx";
+import { SearchPage } from "../../Pages/SearchPage.jsx";
 
 import { Login } from "../../Components/Customers/Login/Login.jsx";
 import { CreateUser } from "../Customers/Login/CreateUser.jsx";
+import { Estates } from "../Customers/Estates/Estates.jsx";
+import { EstateDetails } from "../Customers/Estates/EstateDetails.jsx";
 
 export const routes = createBrowserRouter([
 	{
@@ -23,39 +25,24 @@ export const routes = createBrowserRouter([
 				element: <HomePage />,
 			},
 			//nested router
-			// {
-			// 	path: "/tickets",
-			// 	children: [
-			// 		{
-			// 			index: true,
-			// 			element: <TicketsPage />,
-			// 		},
-			// 		{
-			// 			path: "/tickets/basket",
-			// 			element: <BasketPage />,
-			// 		},
-			// 	],
-			// },
+			{
+				path: "/til-salg",
 
+				children: [
+					{
+						index: true,
+						element: <Estates />,
+					},
+					{
+						path: "/til-salg/:estate_id",
+						element: <EstateDetails />,
+					},
+				],
+			},
 			//nested router
-			// {
-			// 	path: "/lineup",
-			// 	element: <LineupPage />,
-			// 	children: [
-			// 		{
-			// 			index: true,
-			// 			element: <Lineup />,
-			// 		},
-			// 		{
-			// 			path: "/lineup/:stage_id",
-			// 			element: <StageDetailsPage />,
-			// 		},
-			// 	],
-			// },
-
 			{
 				path: "/login",
-				element: <LoginPage />,
+				// element: <LoginPage />,
 				children: [
 					{
 						index: true,
@@ -68,18 +55,11 @@ export const routes = createBrowserRouter([
 				],
 			},
 
-			// {
-			// 	path: "/camps",
-			// 	element: <CampsPage />,
-			// },
-			// {
-			// 	path: "/info",
-			// 	element: <InfoPage />,
-			// },
-			// {
-			// 	path: "/program",
-			// 	element: <ProgramPage />,
-			// },
+			{
+				path: "/search",
+				element: <SearchPage />,
+			},
+
 			{
 				path: "/contact",
 				element: <ContactPage />,
