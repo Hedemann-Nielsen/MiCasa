@@ -35,9 +35,9 @@ export const Header = () => {
 							placeholder="indtast søgeord"
 							// className={globalStyle.input}
 						/>
-						<div className={style.FaSearchWrapper}>
+						<span className={style.FaSearchWrapper}>
 							<FaSearch className={style.FaSearch} />
-						</div>
+						</span>
 					</li>
 				</ul>
 			</nav>

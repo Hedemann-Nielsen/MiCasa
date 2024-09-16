@@ -1,0 +1,87 @@
+@use "../../../Styles/Helpers/Mixinx" as *;
+@use "../../../Styles/Helpers/variables" as *;
+
+.footer {
+	padding: 32px;
+	color: $BG-col;
+	h1 {
+		@include title;
+		color: $BG-col;
+	}
+	.footerContainer {
+		display: flex;
+		justify-content: space-between;
+	}
+	section {
+		p {
+			@include text;
+			color: $BG-col;
+		}
+		.ContactWrapper {
+			margin-top: 7px;
+		}
+	}
+	nav {
+		ul {
+			list-style: none;
+			li {
+				a {
+					@include text;
+					color: $BG-col;
+					text-transform: capitalize;
+					&:hover {
+						color: $GRAY-col;
+					}
+				}
+			}
+		}
+	}
+	.rightSection {
+		text-align: right;
+		h3 {
+			@include subtitle3;
+			color: $BG-col;
+		}
+		.newsLetterWrapper {
+			display: flex;
+			align-items: center;
+			justify-content: end;
+			margin-top: 8px;
+			.ciAtWrapper {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 32px;
+				height: 32px;
+				color: $BG-col;
+				font-weight: 400;
+				line-height: 21px;
+				background-color: $ROSE-col;
+				border-radius: 4px 0 0 4px;
+				.ciAt {
+					font-size: 25px;
+				}
+			}
+			input {
+				width: calc(293px - 71px - 32px);
+				height: 32px;
+				padding: 5px 11px;
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 21px;
+				border-radius: 0;
+			}
+			button {
+				width: 71px;
+				height: 32px;
+				font-family: $font;
+				color: $BG-col;
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 21px;
+				background-color: $ROSE-col;
+				border-radius: 0 4px 4px 0;
+			}
+		}
+	}
+}

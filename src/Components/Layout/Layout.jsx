@@ -17,7 +17,9 @@ export const Layout = () => {
 			{/* tjekker om viduetsstørrelse er under 768px, hvis den er det vises mobil	navigation, hvis den er over vises default subnavigatio  */}
 			{/* {width <= 768 ? <MobileSupNavigation /> : <SupNavigation />} */}
 			<InnerWrapper>
-				<Outlet />
+				<main>
+					<Outlet />
+				</main>
 			</InnerWrapper>
 			{/* cookie banneret vises kun på siden, hvis der ikke er registreret om cookies må gemmes eller ej i localStorage */}
 			<CookieBanner />
