@@ -12,7 +12,7 @@ export const useEstateData = () => {
 					const { data, error } = await supabase
 						.from("estates") //henter fra tabellen estates
 						.select(
-							"*, cities(name, zipcode), estate_types(name), energy_labels(letter)"
+							"*, cities(name, zipcode), estate_types(name), energy_labels(letter), employees(*)"
 						);
 					if (error) {
 						console.error(

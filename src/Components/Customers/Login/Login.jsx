@@ -3,7 +3,7 @@ import { useSupabase } from "../../../Providers/SupabaseProvider";
 import { useAuth } from "../../../Providers/AuthProvider";
 import { useCommentsData } from "../../Hooks/CommentsData";
 import { PageWrapper } from "../../Common/Wrappers/PageWrapper";
-import { EditCommentModal } from "../../Modal/EditCommentModal";
+import { Modal } from "../../Modal/Modal";
 import { NotLogedin } from "./NotLogedin";
 import { ChangePassword } from "./ChangePassword";
 import { useClearMessageHandler } from "../../Utils/ClearMessages";
@@ -121,7 +121,7 @@ export const Login = () => {
 					</div>
 					<LogoutButton handleLogout={handleLogout} />
 					<ChangePassword />
-					<EditCommentModal
+					<Modal
 						isOpen={isModalOpen}
 						onRequestClose={() => setIsModalOpen(false)}>
 						<CommentForm
@@ -129,7 +129,7 @@ export const Login = () => {
 							handleFormSubmit={handleFormSubmit}
 							setIsModalOpen={setIsModalOpen}
 						/>
-					</EditCommentModal>
+					</Modal>
 				</PageWrapper>
 			)}
 		</>

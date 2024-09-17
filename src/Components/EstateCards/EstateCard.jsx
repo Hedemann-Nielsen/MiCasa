@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import style from "./EstateCard.module.scss";
 
 export const EstateCard = ({

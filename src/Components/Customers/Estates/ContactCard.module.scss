@@ -1,0 +1,23 @@
+@use "../../../Styles/Helpers/Mixinx" as *;
+@use "../../../Styles/Helpers/variables" as *;
+
+.contactCard {
+	width: 241px;
+	height: 404px;
+	// box-shadow: 0px 0px 8px 0px #00000040;
+
+	img {
+		width: fit-content;
+		height: 240px;
+	}
+	p {
+		font-family: $font;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		text-align: left;
+	}
+	.employeeName {
+		font-weight: 700;
+	}
+}

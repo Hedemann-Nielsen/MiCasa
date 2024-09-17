@@ -5,7 +5,7 @@ import { useContactMessage } from "../../Hooks/ContactMessageInsert";
 import { ContactMap } from "./ContactMap";
 import { ContactForm } from "./ContactForm";
 import { useForm } from "react-hook-form";
-import { MessageSentModal } from "../../Modal/MessageSentModal";
+import { Modal } from "../../Modal/Modal";
 
 import globalStyle from "../../../Styles/Globalstyles.module.scss";
 import style from "./Contact.module.scss";
@@ -66,7 +66,7 @@ Din besked er sendt til ${selectedEmployee.firstname} ${selectedEmployee.lastnam
 				<ContactMap />
 			</div>
 			{/* modal indhold */}
-			<MessageSentModal
+			<Modal
 				isOpen={modalIsOpen}
 				onRequestClose={closeModal}
 				className="Modal"
@@ -80,7 +80,7 @@ Din besked er sendt til ${selectedEmployee.firstname} ${selectedEmployee.lastnam
 						Luk
 					</button>
 				</div>
-			</MessageSentModal>
+			</Modal>
 		</PageWrapper>
 	);
 };

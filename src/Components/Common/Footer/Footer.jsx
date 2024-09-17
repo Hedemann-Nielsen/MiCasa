@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { MenuData } from "../../Static/MenuData.jsx";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { NewsletterModal } from "../../Modal/NewsletterModal.jsx";
+import { Modal } from "../../Modal/Modal.jsx";
 import { useSupabase } from "../../../Providers/SupabaseProvider";
 
 import { CiAt } from "react-icons/ci";
@@ -108,7 +108,7 @@ export const Footer = () => {
 						)}
 					</div>
 					{/* modal indhold */}
-					<NewsletterModal
+					<Modal
 						isOpen={modalIsOpen}
 						onRequestClose={closeModal}
 						className="Modal"
@@ -121,7 +121,7 @@ export const Footer = () => {
 								Luk
 							</button>
 						</div>
-					</NewsletterModal>
+					</Modal>
 				</section>
 			</div>
 		</footer>

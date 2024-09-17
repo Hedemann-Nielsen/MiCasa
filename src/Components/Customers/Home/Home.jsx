@@ -25,7 +25,7 @@ export const Home = () => {
 	//Funktion til at finde image relateret til hver estate
 	const getImageForEstate = (estateId) => {
 		const imageRel = estateImages.find((image) => image.estate_id === estateId);
-		return imageRel?.images?.image_url || ""; // Return the image URL or an empty string if not found
+		return imageRel?.images?.image_url || ""; // Returnere billede eller en tom text streng
 	};
 
 	//Tag de 3 første efter der er byttet rundt på pladserne  i shuffleArray

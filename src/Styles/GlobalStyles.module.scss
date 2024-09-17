@@ -213,6 +213,9 @@ main {
 		margin: 0 12px 50px 12px;
 	}
 }
+.flex {
+	display: flex;
+}
 .modal {
 	position: absolute;
 	width: 50%;
@@ -231,13 +234,49 @@ main {
 	}
 }
 
+.iconsModal {
+	position: absolute;
+	width: 80%;
+	height: 80%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	// background-color: green;
+
+	.iconModal {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		.closeIcsonWrapper {
+			position: absolute;
+			width: 100%;
+			right: 20px;
+			top: 20px;
+			text-align: end;
+			.closeIcon {
+				font-size: 25px;
+				color: #fff;
+				&:hover {
+					color: $GRAY-col;
+				}
+			}
+		}
+		img {
+			height: 80%;
+			object-fit: cover;
+		}
+	}
+}
+
 .overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(42, 40, 40, 0.625);
+	background-color: rgba(15, 14, 14, 0.793);
 	z-index: 105;
 }
 
@@ -245,11 +284,6 @@ main {
 	.modal {
 		width: 80%;
 		height: 80%;
-		// div {
-		// 	h2 {
-		// 		font-size: 28px;
-		// 	}
-		// }
 	}
 }
 
