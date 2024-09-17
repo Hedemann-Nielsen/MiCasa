@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+
 import style from "./EstateCard.module.scss";
 
 export const EstateCard = ({
+	id,
 	image,
 	address,
 	city,
@@ -14,7 +17,7 @@ export const EstateCard = ({
 	const formattedPrice = price.toLocaleString("da-DK");
 
 	return (
-		<div className={style.card}>
+		<Link to={`/til-salg/${id}`} className={style.card}>
 			<figure>
 				<img src={image} alt={address} />
 				<figcaption>
@@ -34,6 +37,6 @@ export const EstateCard = ({
 					<p className={style.estatePrice}>{formattedPrice} DKK</p>
 				</figcaption>
 			</figure>
-		</div>
+		</Link>
 	);
 };

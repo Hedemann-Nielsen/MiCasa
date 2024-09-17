@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import style from "./SlideShow.module.scss";
 import slide1 from "../../../Assets/SlideImg/slide-1.webp";
 import slide2 from "../../../Assets/SlideImg/slide-2.webp";
 import slide3 from "../../../Assets/SlideImg/slide-3.webp";
 import slide4 from "../../../Assets/SlideImg/slide-4.webp";
 import slide5 from "../../../Assets/SlideImg/slide-5.webp";
 import slide6 from "../../../Assets/SlideImg/slide-6.webp";
+
+import style from "./SlideShow.module.scss";
 
 const images = [slide1, slide2, slide3, slide4, slide5, slide6];
 

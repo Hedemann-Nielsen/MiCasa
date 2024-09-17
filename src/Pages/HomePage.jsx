@@ -1,11 +1,11 @@
-import { PageWrapper } from "../Components/Common/Wrappers/PageWrapper";
+import { HomePageWrapper } from "../Components/Common/Wrappers/HomePageWrapper";
 import { Home } from "../Components/Customers/Home/Home";
 export const HomePage = () => {
 	return (
 		<>
-			<PageWrapper title={"Home"}>
+			<HomePageWrapper title={"Home"}>
 				<Home />
-			</PageWrapper>
+			</HomePageWrapper>
 		</>
 	);
 };

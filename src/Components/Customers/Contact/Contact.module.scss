@@ -18,6 +18,7 @@
 				@include text;
 				display: flex;
 				align-items: flex-start;
+				align-self: start;
 				.requiredStar {
 					font-size: 7px;
 					color: red;

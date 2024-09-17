@@ -7,7 +7,7 @@ export const MenuData = [
 	{
 		id: 2,
 		title: "boliger",
-		url: `/estates`,
+		url: "/til-salg",
 	},
 	{
 		id: 3,

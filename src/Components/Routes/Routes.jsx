@@ -5,6 +5,7 @@ import { HomePage } from "../../Pages/HomePage.jsx";
 import { FallbackPage } from "../../Pages/FallbackPag.jsx";
 import { ContactPage } from "../../Pages/ContactPage.jsx";
 import { SearchPage } from "../../Pages/SearchPage.jsx";
+import { EstatesPage } from "../../Pages/EstatesPage.jsx";
 
 import { Login } from "../../Components/Customers/Login/Login.jsx";
 import { CreateUser } from "../Customers/Login/CreateUser.jsx";
@@ -27,6 +28,7 @@ export const routes = createBrowserRouter([
 			//nested router
 			{
 				path: "/til-salg",
+				element: <EstatesPage />,
 
 				children: [
 					{

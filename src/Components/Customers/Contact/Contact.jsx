@@ -4,11 +4,11 @@ import { useEmployeesDatas } from "../../Hooks/EmployeesData";
 import { useContactMessage } from "../../Hooks/ContactMessageInsert";
 import { ContactMap } from "./ContactMap";
 import { ContactForm } from "./ContactForm";
+import { useForm } from "react-hook-form";
+import { MessageSentModal } from "../../Modal/MessageSentModal";
 
 import globalStyle from "../../../Styles/Globalstyles.module.scss";
 import style from "./Contact.module.scss";
-import { useForm } from "react-hook-form";
-import { MessageSentModal } from "../../Modal/MessageSentModal";
 
 export const Contact = () => {
 	const employees = useEmployeesDatas();
