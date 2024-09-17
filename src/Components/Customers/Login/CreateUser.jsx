@@ -95,10 +95,11 @@ export const CreateUser = () => {
 						<span className={globalStyle.errorMessage}>{errorMessage}</span>
 					)}
 				</div>
-
-				<button type="submit" className={globalStyle.styledButton}>
-					Opret bruger
-				</button>
+				<div className={`${style.btnWrapper} ${globalStyle.btnWrapper}`}>
+					<button type="submit" className={globalStyle.styledBtn}>
+						Opret bruger
+					</button>
+				</div>
 			</form>
 		</PageWrapper>
 	);

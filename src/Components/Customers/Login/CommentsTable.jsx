@@ -21,19 +21,15 @@ export const CommentsTable = ({
 					<tr key={comment.id}>
 						<td>{comment.title}</td>
 						<td>{new Date(comment.created_at).toLocaleDateString()}</td>
-						<td className={style.edit}>
-							<button
-								className={globalStyle.unstyledButton}
-								onClick={() => handleEditComment(comment)}>
-								rediger
-							</button>
+						<td
+							className={style.edit}
+							onClick={() => handleEditComment(comment)}>
+							rediger
 						</td>
-						<td className={style.delete}>
-							<button
-								className={globalStyle.unstyledButton}
-								onClick={() => handleDeleteComment(comment)}>
-								slet
-							</button>
+						<td
+							className={style.delete}
+							onClick={() => handleDeleteComment(comment)}>
+							slet
 						</td>
 					</tr>
 				))}

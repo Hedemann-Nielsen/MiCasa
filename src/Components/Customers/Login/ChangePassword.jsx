@@ -52,7 +52,7 @@ export const ChangePassword = () => {
 
 	return (
 		<div className={style.passwordWrapper}>
-			<h2 className={style.subtitle}>Skift Password</h2>
+			<h2 className={globalStyle.title}>Skift Password</h2>
 			{/* Når der trykkes på knappen (password) kaldes handleChangePassword funktionen */}
 			<form
 				className={style.form}
@@ -100,8 +100,8 @@ export const ChangePassword = () => {
 				{successMessage && (
 					<span className={globalStyle.successMessage}>{successMessage}</span>
 				)}
-				<div className={style.buttonContainer}>
-					<button className={globalStyle.styledButton} type="submit">
+				<div className={`${style.btnWrapper} ${globalStyle.btnWrapper}`}>
+					<button className={globalStyle.styledBtn} type="submit">
 						Skift Password
 					</button>
 				</div>

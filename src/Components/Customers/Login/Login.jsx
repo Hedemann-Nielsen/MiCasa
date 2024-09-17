@@ -11,6 +11,7 @@ import { CommentsTable } from "./CommentsTable";
 import { LogoutButton } from "./LogoutButton";
 import { CommentForm } from "./CommentForm";
 
+import globalStyle from "../../../Styles/GlobalStyles.module.scss";
 import style from "./Login.module.scss";
 
 export const Login = () => {
@@ -22,6 +23,9 @@ export const Login = () => {
 		userId: loginData?.user?.id,
 	});
 
+	console.log(loginData);
+
+	const user = loginData.user.email.split("@")[0];
 	const { setErrorMessage, setSuccessMessage, clearMessages } =
 		useClearMessageHandler();
 
@@ -59,12 +63,12 @@ export const Login = () => {
 	};
 
 	// Funktion til at slette kommentar
-	const handleDeleteComment = async (comment) => {
+	const handleDeleteComment = async (review) => {
 		try {
 			const { data, error } = await supabase
-				.from("user_comments")
+				.from("reviews")
 				.delete()
-				.eq("id", comment.id);
+				.eq("id", review.id);
 			if (error) {
 				throw error;
 			} else {
@@ -106,21 +110,33 @@ export const Login = () => {
 	return (
 		<>
 			{!loginData ? (
-				<PageWrapper title="Login">
+				<PageWrapper>
 					<NotLogedin />
 				</PageWrapper>
 			) : (
-				<PageWrapper title="Min side">
-					<div className={style.loginWrapper}>
-						<h2 className={style.subtitle}>Mine kommentarer</h2>
-						<CommentsTable
-							commentsData={commentsData}
-							handleEditComment={handleEditComment}
-							handleDeleteComment={handleDeleteComment}
-						/>
-					</div>
-					<LogoutButton handleLogout={handleLogout} />
-					<ChangePassword />
+				<PageWrapper>
+					<section className={style.mySite}>
+						<div className={style.leftSite}>
+							<div className={style.loginWrapper}>
+								<h1 className={globalStyle.title}>Din side</h1>
+								<h2 className={style.subtitle}>
+									Administration af anmeldelser
+								</h2>
+								<CommentsTable
+									commentsData={commentsData}
+									handleEditComment={handleEditComment}
+									handleDeleteComment={handleDeleteComment}
+								/>
+							</div>
+						</div>
+						<div className={style.rightSite}>
+							<p className={style.logedInuser}>
+								Du er logget in som <span>{user}</span>
+							</p>
+							<LogoutButton handleLogout={handleLogout} />
+							<ChangePassword />
+						</div>
+					</section>
 					<Modal
 						isOpen={isModalOpen}
 						onRequestClose={() => setIsModalOpen(false)}>

@@ -52,6 +52,7 @@ export const NotLogedin = () => {
 			{userCreatedMessage && (
 				<div className={globalStyle.successMessage}>{userCreatedMessage}</div>
 			)}
+			<h1 className={globalStyle.title}>Login</h1>
 			<p>Indtast brugernavn og password for at logge ind.</p>
 			{/* Når der klikkes på submit (login knappen) vil handleLogin blive kaldt */}
 			<form className={style.form} onSubmit={handleSubmit(handleLogin)}>
@@ -84,8 +85,8 @@ export const NotLogedin = () => {
 				{errorMessage && (
 					<span className={globalStyle.errorMessage}>{errorMessage}</span>
 				)}
-				<div className={style.buttonContainer}>
-					<button className={globalStyle.styledButton} type="submit">
+				<div className={`${style.btnWrapper} ${globalStyle.btnWrapper}`}>
+					<button className={globalStyle.styledBtn} type="submit">
 						Login
 					</button>
 				</div>

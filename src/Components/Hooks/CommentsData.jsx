@@ -9,7 +9,7 @@ export const useCommentsData = ({ userId }) => {
 		try {
 			if (supabase) {
 				const { data, error } = await supabase
-					.from("user_comments") //henter fra tabellen news
+					.from("reviews") //henter fra tabellen news
 					.select("*") // henter alle kolonner fra tabellen og filename fra images fordi de har en  foreginkey
 					.eq("user_id", userId); // Filtrerer kommentarer for den aktuelle bruger
 
