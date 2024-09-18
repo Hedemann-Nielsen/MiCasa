@@ -21,8 +21,6 @@ export const useFavoritsData = (userId, estateId) => {
 							error.message
 						);
 					} else {
-						console.log(data);
-
 						setFavoritsData(data);
 					}
 				}

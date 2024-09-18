@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.2",
+    "dayjs": "^1.11.13",
     "dotenv": "^16.4.5",
     "hamburger-react": "^2.5.1",
     "link-react": "^3.0.0",
