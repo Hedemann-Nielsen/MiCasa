@@ -60,7 +60,7 @@ export const Estates = () => {
 				);
 				break;
 			default:
-				break;
+				console.error("fejl ved sortering af data");
 		}
 
 		return filtered;
