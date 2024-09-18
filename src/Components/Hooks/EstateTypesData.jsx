@@ -1,26 +1,24 @@
 import { useEffect, useState } from "react";
 import { useSupabase } from "../../Providers/SupabaseProvider";
 
-export const useEstateData = () => {
+export const useEstateTypeData = () => {
 	const { supabase } = useSupabase();
-	const [estateData, setEstateData] = useState([]);
+	const [estateTypeData, setEstateTypeData] = useState([]);
 
 	useEffect(() => {
-		const getEstateData = async () => {
+		const getEstateTypeData = async () => {
 			try {
 				if (supabase) {
 					const { data, error } = await supabase
-						.from("estates") //henter fra tabellen estates
-						.select(
-							"*, cities(name, zipcode), estate_types(id, name), energy_labels(letter), employees(*)"
-						);
+						.from("estate_types") //henter fra tabellen estates
+						.select("*");
 					if (error) {
 						console.error(
 							"Fejl ved hentning af data fra Employees:",
 							error.message
 						);
 					} else {
-						setEstateData(data);
+						setEstateTypeData(data);
 					}
 				}
 			} catch (error) {
@@ -28,8 +26,8 @@ export const useEstateData = () => {
 			}
 		};
 
-		getEstateData();
+		getEstateTypeData();
 	}, [supabase]);
 
-	return estateData;
+	return estateTypeData;
 };
