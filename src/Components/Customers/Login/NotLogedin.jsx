@@ -62,7 +62,9 @@ export const NotLogedin = () => {
 					}`}
 					type="email"
 					placeholder="e-mail"
+					name="email"
 					{...register("email", { required: "Email er påkrævet" })}
+					autoComplete="currentemail"
 				/>
 				{errors.email && (
 					<span className={globalStyle.errorMessage}>
@@ -75,7 +77,9 @@ export const NotLogedin = () => {
 					}`}
 					type="password"
 					placeholder="password"
+					name="currentPassword"
 					{...register("password", { required: "Password er påkrævet" })}
+					autoComplete="currentPassword"
 				/>
 				{errors.password && (
 					<span className={globalStyle.errorMessage}>
@@ -93,7 +97,9 @@ export const NotLogedin = () => {
 
 				<div className={style.link}>
 					{/* sender brugeren videre til en ny side  */}
-					<Link to="/login/createUser">Opret mig som bruger</Link>
+					<Link to="/login/createUser">
+						Har du ikke en bruger, opret dig her
+					</Link>
 				</div>
 			</form>
 		</div>

@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { useClearMessageHandler } from "../../Utils/ClearMessages";
-import globalStyle from "../../../Styles/GlobalStyles.module.scss";
-import style from "./Login.module.scss";
+import { useClearMessageHandler } from "../../Utils/ClearMessages.jsx";
+import { useSupabase } from "../../../Providers/SupabaseProvider.jsx";
 import { useForm } from "react-hook-form";
 
+import globalStyle from "../../../Styles/GlobalStyles.module.scss";
+import style from "./Login.module.scss";
+
 export const ChangePassword = () => {
+	const { supabase } = useSupabase();
 	const {
 		errorMessage,
 		successMessage,
@@ -16,6 +18,7 @@ export const ChangePassword = () => {
 		register,
 		handleSubmit,
 		formState: { errors },
+		watch,
 	} = useForm();
 	// Funktion som håndtere ændring af password ved hjælp af supabase
 	const handleChangePassword = async ({ newPassword, confirmNewPassword }) => {
@@ -38,7 +41,7 @@ export const ChangePassword = () => {
 			} else {
 				//hvis passwordskiftet lykkedes sættes der et en succes besked og beskeden logges i konsolen med brugerens information.
 
-				setSuccessMessage("Password changed successfully");
+				setSuccessMessage("Password er ændret");
 				clearMessages();
 				console.log("Password changed successfully for user:", user);
 			}
@@ -59,10 +62,11 @@ export const ChangePassword = () => {
 				onSubmit={handleSubmit(handleChangePassword)}>
 				<input
 					className={`${globalStyle.input} ${
-						errors.newpassword ? globalStyle.errorInput : ""
+						errors.confirmNewPassword ? globalStyle.errorInput : ""
 					}`}
 					type="password"
 					placeholder="Nyt password"
+					name="newPassword"
 					{...register("newPassword", {
 						required: "Nyt password er påkrævet",
 						minLength: {
@@ -70,6 +74,7 @@ export const ChangePassword = () => {
 							message: "Password skal være mindst 6 tegn langt",
 						},
 					})}
+					autoComplete="newPassword"
 				/>
 				{errors.newPassword && (
 					<span className={globalStyle.errorMessage}>
@@ -82,12 +87,14 @@ export const ChangePassword = () => {
 					}`}
 					type="password"
 					placeholder="Bekræft nyt password"
+					name="confirmPassword"
 					{...register("confirmNewPassword", {
-						required: true,
+						required: "Bekræft password er påkrævet",
 						validate: (value) =>
 							value === watch("newPassword") ||
 							"Nyt password og bekræft password er ikke ens",
 					})}
+					autoComplete="confirmPassword"
 				/>
 				{errors.confirmNewPassword && (
 					<span className={globalStyle.errorMessage}>

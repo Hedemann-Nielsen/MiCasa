@@ -101,7 +101,7 @@ button {
 	}
 }
 .successMessage {
-	width: 40%;
+	width: 100%;
 	padding: 13px 23px;
 	color: #fff;
 	border-radius: 4px;
@@ -223,8 +223,8 @@ main {
 }
 .modal {
 	position: absolute;
-	width: 50%;
-	height: 50%;
+	width: 80%;
+	height: 80%;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);

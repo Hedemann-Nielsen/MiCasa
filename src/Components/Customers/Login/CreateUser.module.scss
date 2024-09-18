@@ -1,0 +1,30 @@
+@use "../../../Styles/Helpers/variables" as *;
+
+.createUser {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+
+	.btnWrapper {
+		justify-content: start;
+		button {
+			margin: 0 10px;
+		}
+		.cancelBtn {
+			background-color: $ROSE-col;
+			&:hover {
+				background-color: $PINK-col;
+			}
+		}
+	}
+
+	.link {
+		margin-top: 12px;
+		a {
+			color: $BLACK-col;
+			&:hover {
+				color: $GRAY-col;
+			}
+		}
+	}
+}

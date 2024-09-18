@@ -1,5 +1,4 @@
-import globalStyle from "../../../Styles/GlobalStyles.module.scss";
-import style from "./Login.module.scss";
+import style from "./CommentsTable.module.scss";
 
 export const CommentsTable = ({
 	commentsData,

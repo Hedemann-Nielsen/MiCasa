@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useSupabase } from "../../../Providers/SupabaseProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { PageWrapper } from "../../Common/Wrappers/PageWrapper";
 
 import globalStyle from "../../../Styles/GlobalStyles.module.scss";
-import style from "./Login.module.scss";
+import style from "./CreateUser.module.scss";
 
 export const CreateUser = () => {
 	const { supabase } = useSupabase();
@@ -57,10 +57,14 @@ export const CreateUser = () => {
 		<PageWrapper title="Opret bruger">
 			<form className={style.createUser} onSubmit={handleSubmit(onSubmit)}>
 				<input
-					className={globalStyle.input}
+					className={`${globalStyle.input} ${
+						errors.email ? globalStyle.errorInput : ""
+					}`}
 					type="email"
 					placeholder="Email"
+					name="email"
 					{...register("email", { required: true })}
+					autoComplete="email"
 				/>
 				{errors.email && (
 					<span className={globalStyle.errorMessage}>
@@ -69,10 +73,14 @@ export const CreateUser = () => {
 				)}
 
 				<input
-					className={globalStyle.input}
+					className={`${globalStyle.input} ${
+						errors.email ? globalStyle.errorInput : ""
+					}`}
 					type="password"
 					placeholder="Password"
+					name="password"
 					{...register("password", { required: true })}
+					autoComplete="celectPassword"
 				/>
 				{errors.password && (
 					<span className={globalStyle.errorMessage}>
@@ -80,10 +88,14 @@ export const CreateUser = () => {
 					</span>
 				)}
 				<input
-					className={globalStyle.input}
+					className={`${globalStyle.input} ${
+						errors.email ? globalStyle.errorInput : ""
+					}`}
 					type="password"
 					placeholder="Bekræft Password"
+					name="confirmPassword"
 					{...register("confirmPassword", { required: true })}
+					autoComplete="confirmPassword"
 				/>
 				{errors.password && (
 					<span className={globalStyle.errorMessage}>
@@ -99,6 +111,11 @@ export const CreateUser = () => {
 					<button type="submit" className={globalStyle.styledBtn}>
 						Opret bruger
 					</button>
+					<Link
+						to="/login"
+						className={`${style.cancelBtn} ${globalStyle.styledBtn}`}>
+						Anuller
+					</Link>
 				</div>
 			</form>
 		</PageWrapper>

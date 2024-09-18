@@ -1,0 +1,47 @@
+@use "../../../Styles/Helpers/variables" as *;
+@use "../../../Styles/Helpers/Mixinx" as *;
+
+.ModalForm {
+	margin-top: 15px;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	width: 80%;
+
+	h1 {
+		margin-bottom: 15px;
+	}
+	h3 {
+		span {
+			@include text;
+			font-size: 14px;
+			color: rgb(253, 212, 212);
+		}
+	}
+	.inputCenter {
+		display: block;
+		width: 23.125rem;
+		height: 3rem;
+		border-radius: 5px;
+		margin-top: 12px;
+		padding-left: 16px;
+		resize: none;
+		height: 100px;
+		width: 100%;
+		&::placeholder {
+			font-size: 16px;
+			font-weight: 300;
+		}
+	}
+	.btnWrapper {
+		flex-direction: row;
+		button {
+			margin: 10px;
+		}
+		.cancelBtn {
+			background-color: $ROSE-col;
+			&:hover {
+				background-color: $PINK-col;
+			}
+		}
+	}
+}

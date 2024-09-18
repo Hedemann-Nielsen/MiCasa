@@ -19,13 +19,18 @@ export const Login = () => {
 	const { loginData, setLoginData } = useAuth();
 	const [selectedComment, setSelectedComment] = useState(null); // State til valgte kommentar
 	const [isModalOpen, setIsModalOpen] = useState(false); // State til at styre modalens synlighed
+	const [user, setUser] = useState();
 	const { commentsData, fetchComments } = useCommentsData({
 		userId: loginData?.user?.id,
 	});
 
-	console.log(loginData);
+	useEffect(() => {
+		if (loginData?.user) {
+			const userName = loginData.user.email.split("@")[0];
+			setUser(userName);
+		}
+	}, [loginData]);
 
-	const user = loginData.user.email.split("@")[0];
 	const { setErrorMessage, setSuccessMessage, clearMessages } =
 		useClearMessageHandler();
 
@@ -39,10 +44,10 @@ export const Login = () => {
 	const PosthandleSave = async (updatedComment) => {
 		try {
 			const { data, error } = await supabase
-				.from("user_comments")
+				.from("reviews")
 				.update({
 					title: updatedComment.title,
-					comment: updatedComment.comment,
+					content: updatedComment.comment,
 				})
 				.eq("id", updatedComment.id);
 

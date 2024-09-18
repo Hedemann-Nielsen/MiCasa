@@ -1,0 +1,57 @@
+@use "../../../Styles/Helpers/variables" as *;
+
+.commentsTable {
+	width: 80%;
+	text-align: left;
+	margin-top: 13px;
+	border-collapse: collapse;
+
+	th,
+	td {
+		border-bottom: solid 1px black;
+		padding: 3px 0;
+	}
+	table {
+		font-size: 16px;
+		line-height: 24px;
+		width: 100%;
+
+		thead {
+			font-weight: 700;
+			text-align: left;
+		}
+		tbody {
+			font-weight: 400;
+			text-align: left;
+		}
+	}
+	tr th:first-child {
+		width: 50%;
+	}
+	tr th:nth-child(2) {
+		width: 40%;
+	}
+	tr th:last-child {
+		text-align: right;
+	}
+	td:nth-child(3) {
+		width: 5%;
+	}
+	td:last-child {
+		// width: ;
+
+		width: fit-content;
+	}
+
+	.edit {
+		cursor: pointer;
+		color: $succ-col;
+	}
+	.delete {
+		cursor: pointer;
+		color: $err-col;
+	}
+}
+.link {
+	margin-top: 50px;
+}

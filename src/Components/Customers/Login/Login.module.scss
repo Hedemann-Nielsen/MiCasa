@@ -12,30 +12,23 @@
 // 		}
 // 	}
 // }
-// .loginWrapper {
-// 	display: flex;
-// 	flex-direction: column;
-// 	p {
-// 		@include text;
-// 		margin-top: 22px;
-// 	}
-// }
-
-// styling til når du ikke er logget ind
-.form {
+.loginWrapper {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
-
-	.btnWrapper {
-		justify-content: start;
+	.form {
+		display: flex;
+		flex-direction: column;
+		.btnWrapper {
+			justify-content: start;
+		}
 	}
+
 	.link {
 		margin-top: 12px;
 		a {
-			color: $BLACK-col;
+			@include text;
 			&:hover {
-				color: $GRAY-col;
+				text-decoration: underline;
 			}
 		}
 	}
@@ -58,62 +51,8 @@
 		}
 	}
 }
-.commentsTable {
-	width: 80%;
-	text-align: left;
-	margin-top: 13px;
-	border-collapse: collapse;
 
-	th,
-	td {
-		border-bottom: solid 1px black;
-		padding: 3px 0;
-	}
-	table {
-		font-size: 16px;
-		line-height: 24px;
-		width: 100%;
-
-		thead {
-			font-weight: 700;
-			text-align: left;
-		}
-		tbody {
-			font-weight: 400;
-			text-align: left;
-		}
-	}
-	tr th:first-child {
-		width: 50%;
-	}
-	tr th:nth-child(2) {
-		width: 40%;
-	}
-	tr th:last-child {
-		text-align: right;
-	}
-	td:nth-child(3) {
-		width: 5%;
-	}
-	td:last-child {
-		// width: ;
-
-		width: fit-content;
-	}
-
-	.edit {
-		cursor: pointer;
-		color: $succ-col;
-	}
-	.delete {
-		cursor: pointer;
-		color: $err-col;
-	}
-}
-.link {
-	margin-top: 50px;
-}
-
+//styling til ChangePassword
 .passwordWrapper {
 	margin-top: 50px;
 	.form {
@@ -136,30 +75,6 @@
 	margin: 30px 0;
 }
 
-//opret bruger
-
-.createUser {
-	display: flex;
-	flex-direction: column;
-	input {
-		display: block;
-		width: 23.125rem;
-		height: 3rem;
-		border-radius: 5px;
-		margin: 10px 0;
-		padding-left: 16px;
-		&::placeholder {
-			font-size: 16px;
-			font-weight: 300;
-		}
-	}
-	.btnWrapper {
-		justify-content: start;
-	}
-}
-.btnWrapper {
-	justify-content: start;
-}
 @media (max-width: 768px) {
 	.loginWrapper {
 		.form {

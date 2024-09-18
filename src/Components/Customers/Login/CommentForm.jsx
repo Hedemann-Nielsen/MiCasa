@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
+
 import globalStyle from "../../../Styles/GlobalStyles.module.scss";
-import style from "./Login.module.scss";
+import style from "./CommentForm.module.scss";
 
 export const CommentForm = ({
 	selectedComment,
@@ -19,23 +20,17 @@ export const CommentForm = ({
 	});
 
 	return (
-		<form
-			onSubmit={handleSubmit(handleFormSubmit)}
-			className={globalStyle.ModalForm}>
-			<h2 className={globalStyle.subtitle}>Ændre din kommentar</h2>
-			<input
-				className={`${globalStyle.inputCenter} ${
-					errors.title ? globalStyle.errorInput : ""
-				}`}
-				type="text"
-				placeholder="skriv ny title"
-				{...register("title", { required: "Titel er påkrævet" })}
-			/>
-			{errors.title && (
-				<span className={globalStyle.errorMessage}>{errors.title.message}</span>
-			)}
-			<input
-				className={`${globalStyle.inputCenter} ${
+		//modal indhold til ændring af kommentar
+		<form onSubmit={handleSubmit(handleFormSubmit)} className={style.ModalForm}>
+			<h1 className={globalStyle.title}>Ændre din kommentar</h1>
+
+			<p className={globalStyle.text}>Din nuverende kommentar</p>
+			<h3 className={globalStyle.subtitle4}>
+				{selectedComment?.title} <span>(overskrift kan ikke ændres)</span>
+			</h3>
+			<p>{selectedComment?.content}</p>
+			<textarea
+				className={`${style.inputCenter} ${
 					errors.comment ? globalStyle.errorInput : ""
 				}`}
 				type="text"
@@ -47,12 +42,12 @@ export const CommentForm = ({
 					{errors.comment.message}
 				</span>
 			)}
-			<div className={style.buttonContainer}>
-				<button className={globalStyle.styledButton} type="submit">
+			<div className={`${style.btnWrapper} ${globalStyle.btnWrapper}`}>
+				<button className={globalStyle.styledBtn} type="submit">
 					Gem
 				</button>
 				<button
-					className={globalStyle.styledButton}
+					className={`${style.cancelBtn} ${globalStyle.styledBtn}`}
 					type="button"
 					onClick={() => setIsModalOpen(false)}>
 					Annuller

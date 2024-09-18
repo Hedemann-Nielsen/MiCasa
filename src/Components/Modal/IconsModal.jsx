@@ -8,7 +8,7 @@ export function IconsModal({ isOpen, onRequestClose, children }) {
 		<ReactModal
 			isOpen={isOpen}
 			onRequestClose={onRequestClose}
-			// contentLabel="Modal"
+			contentLabel="IconsModal"
 			className={globalStyles.iconsModal}
 			overlayClassName={globalStyles.overlay}>
 			{children}
