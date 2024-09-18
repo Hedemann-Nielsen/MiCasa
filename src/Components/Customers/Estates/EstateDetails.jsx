@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PageWrapper } from "../../Common/Wrappers/PageWrapper";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEstateData } from "../../Hooks/EstateData.jsx";
 import { useEstateImagesRelData } from "../../Hooks/EstateImagesRelData.jsx";
 import { useAuth } from "../../../Providers/AuthProvider";
 import { useSupabase } from "../../../Providers/SupabaseProvider.jsx";
 import { ContactCard } from "./ContactCard.jsx";
 import { IconsModal } from "../../Modal/IconsModal.jsx";
+import { useFavoritsData } from "../../Hooks/FavoritsData.jsx";
 
 import iconFloorPlan from "../../../assets/Icons/floorPlan.png";
 import iconGallery from "../../../assets/Icons/gallery.png";
@@ -20,10 +21,13 @@ import style from "./EstateDetails.module.scss";
 
 export const EstateDetails = () => {
 	const { estate_id } = useParams();
-	const { user } = useAuth();
+	const estateId = estate_id;
+	const { loginData } = useAuth();
+	const userId = loginData?.user?.id;
 	const { supabase } = useSupabase();
 	const estateData = useEstateData();
 	const estateImages = useEstateImagesRelData();
+	const favoritsData = useFavoritsData(userId, estateId);
 	const [photomodalIsOpen, setPhotoModalIsOpen] = useState(false);
 	const [floorPlanModalIsOpen, setFloorPlanModalIsOpen] = useState(false);
 	const [locationModalIsOpen, setLocationModalIsOpen] = useState(false);
@@ -32,28 +36,66 @@ export const EstateDetails = () => {
 
 	const estate = estateData.find((estate) => estate.id === parseInt(estate_id));
 
-	const handleLikeClick = async () => {
-		if (user && supabase) {
-			try {
-				// Insert the estate_id and user_id into the favorites table
-				const { data, error } = await supabase
-					.from("favorites")
-					.insert([{ estate_id: estate.id, user_id: user.id }]);
+	//funktion der overvåger om der er en bruger der er logget ind.
+	useEffect(() => {
+		if (!userId) {
+			setIsLiked(false); // Nulstil liked status når der ikke er nogen bruger logget in
+		}
+	}, [userId]);
 
-				if (error) {
-					console.error("Error liking estate:", error);
-					setErrorMessage("Der opstod en fejl");
+	// Funktion der tjekker om den aktuelle bolig er liked fra brugeren
+	useEffect(() => {
+		if (favoritsData && estate) {
+			//some returnere true eller false
+			const isEstateLiked = favoritsData.some(
+				(favorite) => favorite.estate_id === estate.id
+			);
+			setIsLiked(isEstateLiked);
+		}
+	}, [favoritsData, estate]);
+
+	// funktion til at indsætte eller slette data i databasen
+	const handleLikeClick = async () => {
+		if (loginData && supabase) {
+			try {
+				if (isLiked) {
+					// Hvis boligen allerede er liket, slet den fra tabellen favorits
+					const { data, error } = await supabase
+						.from("favorites")
+						.delete()
+						.eq("estate_id", estate.id)
+						.eq("user_id", loginData.user.id);
+
+					if (error) {
+						console.error("Error unliking estate:", error);
+						setErrorMessage("Der opstod en fejl ved fjernelse af favorit.");
+					} else {
+						setIsLiked(false); // Opdater isLiked til false
+					}
 				} else {
-					setIsLiked(true); // Set the state to reflect the like
+					// Hvis boligen ikke er liket, indsæt den i tabellen favorits
+					const { data, error } = await supabase
+						.from("favorites")
+						.insert([{ estate_id: estate.id, user_id: loginData.user.id }]);
+
+					if (error) {
+						console.error("Error liking estate:", error);
+						setErrorMessage("Der opstod en fejl.");
+					} else {
+						setIsLiked(true); // Opdater isLiked til true
+					}
 				}
 			} catch (error) {
-				console.error("Error ved insætning af favorit:", error);
+				console.error("Error ved håndtering af favorit:", error);
 			}
 		} else {
-			setErrorMessage("Du skal være logget ind for at like boligen.");
+			setErrorMessage(
+				"Du skal være logget ind for at like boligen. Gå til login."
+			);
 		}
 	};
 
+	//funktion der tjekker om den aktuelle bolig eksistere i databasen
 	if (!estate) {
 		return <span> Denne bolig findes ikke</span>;
 	}
@@ -134,7 +176,7 @@ export const EstateDetails = () => {
 						<div className={`${style.addressContent}`}>
 							<h1 className={globalStyle.title}>{estate.address}</h1>
 							<p>
-								{estate.cities.name} {estate.cities.zipcode}
+								{estate.cities.zipcode} {estate.cities.name}
 							</p>
 							<div className={globalStyle.flex}>
 								<p>{estate.estate_types.name} </p>
@@ -145,23 +187,42 @@ export const EstateDetails = () => {
 							</div>
 							<p>set x gang</p>
 						</div>
-						<div className={globalStyle.flex}>
-							<div className={style.iconWrapper} onClick={OpenModalToPhoto}>
-								<img src={iconGallery} />
-							</div>
+						<div>
+							<div className={globalStyle.flex}>
+								<div className={style.iconWrapper} onClick={OpenModalToPhoto}>
+									<img src={iconGallery} />
+								</div>
 
-							<div className={style.iconWrapper} onClick={OpenModalToFloorPlan}>
-								<img src={iconFloorPlan} />
-							</div>
-							<div className={style.iconWrapper} onClick={OpenModalToLocation}>
-								<img src={iconLocation} />
-							</div>
+								<div
+									className={style.iconWrapper}
+									onClick={OpenModalToFloorPlan}>
+									<img src={iconFloorPlan} />
+								</div>
+								<div
+									className={style.iconWrapper}
+									onClick={OpenModalToLocation}>
+									<img src={iconLocation} />
+								</div>
 
-							<div className={style.iconWrapper} onClick={handleLikeClick}>
-								<img src={iconLike} />
+								<div
+									className={`${style.iconWrapper} ${
+										isLiked ? style.liked : ""
+									}`}
+									onClick={handleLikeClick}>
+									<img src={iconLike} />
+								</div>
 							</div>
-							{/* Show error message if the user is not logged in */}
-							{errorMessage && <p className={style.error}>{errorMessage}</p>}
+							{/* Vis error besked hvis brugeren ikker er logget ind*/}
+							<div
+								className={`${style.errorMessage} ${
+									errorMessage ? style.show : ""
+								}`}>
+								{errorMessage && (
+									<p className={style.error}>
+										<Link to="/login">{errorMessage}</Link>
+									</p>
+								)}
+							</div>
 						</div>
 
 						{/* modal indhold til gallery icon*/}
@@ -222,6 +283,7 @@ export const EstateDetails = () => {
 							<p>Ejerudgift per måned: {formattedCostPriceWDigits}</p>
 						</div>
 					</section>
+
 					<section className={style.secDetails}>
 						<div className={style.detailsList}>
 							<div>

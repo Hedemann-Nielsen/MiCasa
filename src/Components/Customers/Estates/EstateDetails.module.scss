@@ -48,6 +48,7 @@
 			height: 84px;
 			border: solid 1px $GRAY-col;
 			border-radius: 50%;
+			cursor: pointer;
 		}
 
 		.estatePrices {
@@ -56,6 +57,21 @@
 			span {
 				@include title;
 			}
+		}
+		.errorMessage {
+			text-align: end;
+			margin-top: 5px;
+			opacity: 0;
+			transition: opacity 1s ease-out;
+			a {
+				@include text;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+		.errorMessage.show {
+			opacity: 1;
 		}
 	}
 	.secDetails {
@@ -84,4 +100,8 @@
 			width: 333px;
 		}
 	}
+}
+
+.liked {
+	background-color: red;
 }
