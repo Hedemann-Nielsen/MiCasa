@@ -9,11 +9,12 @@
 	display: flex;
 	justify-content: space-between;
 	text-align: center;
-
-	img {
-		margin: 32px;
-		width: 269px;
-		height: 105px;
+	a {
+		img {
+			margin: 32px;
+			width: 269px;
+			height: 105px;
+		}
 	}
 	nav {
 		ul {
@@ -22,7 +23,7 @@
 			list-style: none;
 			align-items: center;
 			padding-right: 32px;
-			li {
+			.menuLink {
 				cursor: pointer;
 				padding: 0 16px;
 				a {
@@ -37,33 +38,78 @@
 				.activeLink {
 					color: $ROSE-col !important;
 				}
-				input {
-					width: calc(172px - 24px);
-					height: 24px;
-					font-size: 12px;
-					font-weight: 400;
-					line-height: 16.34px;
-					font-family: $font;
-					padding: 6px 16px;
-
-					border-radius: 4px 0 0 4px;
-					border: 1px solid #ccc;
-					font-family: "Poppins", sans-serif;
-				}
-				.FaSearchWrapper {
-					height: 24px;
-					width: 24px;
-					background-color: $GRAY-col;
-					border-radius: 0 4px 4px 0;
-
-					.FaSearch {
-						color: #fff;
-						font-size: 12px;
-					}
-				}
 			}
 			.searchWrapper {
-				display: flex;
+				.searchbarContent {
+					display: flex;
+					input {
+						width: calc(172px - 24px);
+						height: 24px;
+						font-size: 12px;
+						font-weight: 400;
+						line-height: 16.34px;
+						padding: 6px 16px;
+						border-radius: 4px 0 0 4px;
+						border: 1px solid #ccc;
+						font-family: "Poppins", sans-serif;
+						&:focus {
+							outline: none;
+						}
+					}
+					.faSearchWrapper {
+						height: 24px;
+						width: 24px;
+						background-color: $GRAY-col;
+						border-radius: 0 4px 4px 0;
+					}
+					.FaSearch {
+						color: #fff;
+						font-size: 14px;
+					}
+				}
+				.searchResults {
+					position: absolute;
+					width: 300px;
+					right: 55px;
+					padding-top: 1px;
+					border: none;
+					background-color: #fff;
+					ul {
+						margin: 0;
+						padding: 0;
+						flex-direction: column;
+						align-items: start;
+						padding-left: 5px;
+						.resultLine {
+							list-style: none;
+							justify-content: start;
+							margin: 0;
+							padding: 0;
+							text-align: left;
+
+							a {
+								font-size: 12px;
+								font-weight: 400;
+
+								font-family: "Poppins", sans-serif;
+								color: black;
+								text-align: left;
+								margin: 0;
+								padding: 0;
+								&:hover {
+									text-decoration: underline;
+								}
+							}
+						}
+					}
+					// 	p {
+					// 		font-size: 12px;
+					// 		font-weight: 400;
+					// 		font-family: "Poppins", sans-serif;
+					// 		color: black;
+					// 		text-align: left;
+					// 	}
+				}
 			}
 		}
 	}
