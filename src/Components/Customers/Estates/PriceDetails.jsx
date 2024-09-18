@@ -1,7 +1,5 @@
 import dayjs from "dayjs";
 
-console.log({ dayjs });
-
 import style from "./EstateDetails.module.scss";
 
 export const PriceDetails = ({

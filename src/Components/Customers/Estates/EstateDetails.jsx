@@ -24,7 +24,7 @@ export const EstateDetails = () => {
 
 	const [isLiked, setIsLiked] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
-
+	const [count, setCount] = useState();
 	const estate = estateData.find((estate) => estate.id === parseInt(estate_id));
 
 	//funktion der overvåger om der er en bruger der er logget ind.
@@ -44,6 +44,37 @@ export const EstateDetails = () => {
 			setIsLiked(isEstateLiked);
 		}
 	}, [favoritsData, estate]);
+
+	// Funktion til at håndtere klik på boligen
+	const incrementClickCount = async () => {
+		if (!estate || estate.num_clicks === undefined) {
+			console.error("Estate is undefined or num_clicks is not available");
+			return;
+		}
+
+		const clickCount = estate.num_clicks;
+		let newCount = clickCount + 1;
+		setCount(newCount);
+
+		try {
+			const { error } = await supabase
+				.from("estates")
+				.update({ num_clicks: newCount })
+				.eq("id", estateId);
+
+			if (error) {
+				console.error("Fejl ved opdatering af klik:", error.message);
+			}
+		} catch (error) {
+			console.error("Generel fejl:", error.message);
+		}
+	};
+
+	useEffect(() => {
+		if (estate && estateId) {
+			incrementClickCount();
+		}
+	}, [estateId, estate]);
 
 	// funktion til at indsætte eller slette data i databasen
 	const handleLikeClick = async () => {

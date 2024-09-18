@@ -79,7 +79,7 @@ export const PrimaryDetails = ({
 					<p className={style.spacer}>|</p>
 					<p>{estate.num_rooms} vær</p>
 				</div>
-				<p>set x gang</p>
+				<p>set {estate.num_clicks} gange</p>
 			</div>
 			<div>
 				<div className={globalStyle.flex}>
