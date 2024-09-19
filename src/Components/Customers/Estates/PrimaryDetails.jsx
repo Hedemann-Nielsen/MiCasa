@@ -66,13 +66,13 @@ export const PrimaryDetails = ({
 		setLocationModalIsOpen(false);
 	};
 	return (
-		<section className={`${style.primaryDetails} ${globalStyle.flex}`}>
-			<div className={`${style.addressContent}`}>
+		<section className={style.primaryDetails}>
+			<div className={style.addressContent}>
 				<h1 className={globalStyle.title}>{estate.address}</h1>
 				<p>
 					{estate.cities.zipcode} {estate.cities.name}
 				</p>
-				<div className={globalStyle.flex}>
+				<div className={style.estateType}>
 					<p>{estate.estate_types.name} </p>
 					<p className={style.spacer}>|</p>
 					<p>{estate.floor_space} m2 </p>
@@ -81,8 +81,8 @@ export const PrimaryDetails = ({
 				</div>
 				<p>set {estate.num_clicks} gange</p>
 			</div>
-			<div>
-				<div className={globalStyle.flex}>
+			<div className={style.icons}>
+				<div className={style.iconContent}>
 					<div className={style.iconWrapper} onClick={OpenModalToPhoto}>
 						<img src={iconGallery} />
 					</div>

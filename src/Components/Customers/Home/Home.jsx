@@ -91,12 +91,11 @@ Tak for din anmeldse ${combinedFormData.name}.`
 			);
 			setModalMessage2(
 				`Overskrift: ${combinedFormData.title}
-anmeldse: ${combinedFormData.comment}
-Du kan ændre din anmeldse, når du er logget ind via min side`
+`
 			);
 			setModalMessage3(
 				`Anmeldse: ${combinedFormData.comment}
-Du kan ændre din anmeldse, når du er logget ind via min side`
+`
 			);
 
 			setShowModal(true); // Åbn modalen

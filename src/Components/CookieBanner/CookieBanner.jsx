@@ -33,12 +33,18 @@ export const CookieBanner = () => {
 							Vi bruger cookies til at tilpasse indhold og annoncer, tilbyde en
 							hurtigere og bedre tingængelig side. Er det okay med dig?
 						</p>
-						<button onClick={cookieOK} className={globalStyle.styledButton}>
-							Ja
-						</button>
-						<button onClick={cookieDeny} className={globalStyle.styledButton}>
-							Nej
-						</button>
+						<div className={style.btnContainer}>
+							<span className={globalStyle.btnWrapper}>
+								<button onClick={cookieOK} className={globalStyle.styledBtn}>
+									Ja
+								</button>
+							</span>
+							<span className={globalStyle.btnWrapper}>
+								<button onClick={cookieDeny} className={globalStyle.styledBtn}>
+									Nej
+								</button>
+							</span>
+						</div>
 					</section>
 				</div>
 			)}

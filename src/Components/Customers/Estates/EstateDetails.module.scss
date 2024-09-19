@@ -32,23 +32,32 @@
 		margin: 0;
 	}
 	.primaryDetails {
+		display: flex;
 		justify-content: space-between;
 		.addressContent {
 			@include subtitle3;
+
+			.estateType {
+				display: flex;
+			}
 		}
 		.spacer {
 			padding: 0 7px;
 		}
-		.iconWrapper {
+		.iconContent {
 			display: flex;
-			align-items: center;
-			justify-content: center;
-			margin: 0 16px;
-			width: 84px;
-			height: 84px;
-			border: solid 1px $GRAY-col;
-			border-radius: 50%;
-			cursor: pointer;
+
+			.iconWrapper {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0 16px;
+				width: 84px;
+				height: 84px;
+				border: solid 1px $GRAY-col;
+				border-radius: 50%;
+				cursor: pointer;
+			}
 		}
 
 		.estatePrices {
@@ -77,8 +86,8 @@
 	.secDetails {
 		margin-top: 84px;
 		display: grid;
-		grid-template-columns: auto auto auto;
-		gap: 126px;
+		grid-template-columns: 1fr 1fr 1fr;
+		// gap: 126px;
 		.detailsList {
 			display: flex;
 			justify-content: space-between;
@@ -104,4 +113,44 @@
 
 .liked {
 	background-color: red;
+}
+
+//mobil
+@media (max-width: 768px) {
+	.estateDetails {
+		top: -990px;
+		.primaryDetails {
+			flex-direction: column;
+			.icons {
+				.iconContent {
+					align-items: center;
+					justify-content: center;
+					width: 100%;
+					.iconWrapper {
+						width: 70px;
+						height: 70px;
+						margin-top: 10px;
+					}
+				}
+			}
+			.estatePrices {
+				margin-top: 12px;
+				p {
+					text-align: center;
+				}
+			}
+		}
+		.secDetails {
+			grid-template-columns: 1fr;
+			.detailsList {
+				margin: 5px 0;
+			}
+		}
+		.highlights {
+			display: flex;
+			flex-direction: column-reverse;
+			grid-template-columns: 1fr;
+			gap: 10px;
+		}
+	}
 }

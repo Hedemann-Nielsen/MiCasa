@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import globalStyle from "../../../Styles/GlobalStyles.module.scss";
 import style from "./Fallback.module.scss";
 
@@ -14,11 +15,8 @@ export const Fallback = () => {
 					address, or the page has been moved to another URL.
 					<p>If you think this is an error contact support.</p>
 				</p>
-				<div>
-					<button className={globalStyle.styledButton}>
-						Take me back to home page
-					</button>
-				</div>
+
+				<Link className={globalStyle.styledBtn}>Take me to home page</Link>
 			</div>
 		</div>
 	);

@@ -122,10 +122,10 @@ export const Login = () => {
 				</PageWrapper>
 			) : (
 				<PageWrapper>
+					<h1 className={globalStyle.title}>Din side</h1>
 					<section className={style.mySite}>
 						<div className={style.leftSite}>
 							<div className={style.loginWrapper}>
-								<h1 className={globalStyle.title}>Din side</h1>
 								<h2 className={style.subtitle}>
 									Administration af anmeldelser
 								</h2>

@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 
 import style from "./EstateDetails.module.scss";
 
-export const PriceDetails = ({
+export const FactsforEstate = ({
 	estate,
 	formattedCashPrice,
 	formattedPayoutPrice,

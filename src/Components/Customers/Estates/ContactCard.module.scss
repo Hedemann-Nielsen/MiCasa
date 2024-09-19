@@ -4,7 +4,6 @@
 .contactCard {
 	width: 241px;
 	height: 404px;
-	// box-shadow: 0px 0px 8px 0px #00000040;
 
 	img {
 		width: fit-content;
@@ -19,5 +18,12 @@
 	}
 	.employeeName {
 		font-weight: 700;
+	}
+}
+
+//mobil
+@media (max-width: 768px) {
+	.contactCard {
+		width: 100%;
 	}
 }

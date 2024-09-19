@@ -18,3 +18,17 @@
 		gap: 32px;
 	}
 }
+
+//mobil
+@media (max-width: 768px) {
+	.estateWrapper {
+		select {
+			margin: 12px auto;
+		}
+		.estateCard {
+			grid-template-columns: 1fr;
+			width: 80%;
+			margin: auto;
+		}
+	}
+}

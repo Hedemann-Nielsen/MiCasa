@@ -8,11 +8,11 @@
 
 	figure {
 		margin: 16px;
-
 		img {
 			margin: auto;
-			width: 100%;
+			width: 361px;
 			height: 271px;
+			object-fit: cover;
 			border-radius: 8px 8px 0 0;
 		}
 		figcaption {
@@ -43,4 +43,7 @@
 			}
 		}
 	}
+}
+
+@media (min-width: 768px) {
 }

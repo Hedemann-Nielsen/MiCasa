@@ -55,3 +55,11 @@
 .link {
 	margin-top: 50px;
 }
+
+//mobil
+@media (max-width: 768px) {
+	.commentsTable {
+		margin: auto;
+		width: 90%;
+	}
+}

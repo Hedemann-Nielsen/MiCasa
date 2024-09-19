@@ -7,7 +7,7 @@ import { useAuth } from "../../../Providers/AuthProvider";
 import { useSupabase } from "../../../Providers/SupabaseProvider.jsx";
 import { ContactCard } from "./ContactCard.jsx";
 import { useFavoritsData } from "../../Hooks/FavoritsData.jsx";
-import { PriceDetails } from "./PriceDetails.jsx";
+import { FactsforEstate } from "./FactsforEstate.jsx";
 import { PrimaryDetails } from "./PrimaryDetails.jsx";
 
 import style from "./EstateDetails.module.scss";
@@ -165,7 +165,7 @@ export const EstateDetails = () => {
 						estateImages={estateImages}
 					/>
 
-					<PriceDetails
+					<FactsforEstate
 						estate={estate}
 						formattedCashPrice={formattedCashPrice}
 						formattedPayoutPrice={formattedPayoutPrice}

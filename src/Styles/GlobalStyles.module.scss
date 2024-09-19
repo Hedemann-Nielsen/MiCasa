@@ -49,7 +49,7 @@ a {
 
 //klassisk global styling til knapper
 button {
-	font-size: 1rem;
+	font-size: 16px;
 	cursor: pointer;
 	background-color: transparent;
 	border: none;
@@ -101,7 +101,7 @@ button {
 		transparent 50%
 	);
 	background-size: 200% 100%;
-	font-size: 1.2rem;
+	font-size: 16px;
 	margin: 10px 0;
 	animation: backgroundSlide 2s forwards;
 }
@@ -157,8 +157,9 @@ button {
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 21px;
+	margin: 6px 0;
 	&:active {
-		border: 1px solid $GRAY-col !important;
+		outline: none;
 	}
 }
 
@@ -181,12 +182,6 @@ main {
 	background-color: transparent !important;
 }
 
-// .HomePageWrapper {
-// 	display: flex;
-// 	flex-direction: column;
-// 	min-height: 100vh;
-// }
-
 .pageWrapper {
 	height: 100%;
 	margin: 32px;
@@ -202,9 +197,7 @@ main {
 		margin: 0 12px 50px 12px;
 	}
 }
-.flex {
-	display: flex;
-}
+
 .modal {
 	position: absolute;
 	width: 80%;

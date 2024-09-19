@@ -1,0 +1,99 @@
+@use "../../../Styles/Helpers/Mixinx" as *;
+@use "../../../Styles/Helpers/variables" as *;
+
+.mobilHeader {
+	width: 100%;
+	background-image: url(../../../assets/Header_Canvas.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 90px;
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+
+	a {
+		img {
+			margin: 12px;
+			height: auto;
+			width: auto;
+			max-height: 80px;
+		}
+	}
+
+	.navMobilMenu {
+		background-color: $BLACK-col;
+		width: 250px;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+		right: -100%;
+		z-index: 1000;
+		transition: 850ms;
+		div {
+			span {
+				display: flex;
+				justify-content: space-between;
+				border-bottom: 1px solid $ROSE-col;
+				.title {
+					color: #fff;
+					margin: 0 12px;
+				}
+			}
+			ul {
+				list-style: none;
+				display: flex;
+				justify-content: end;
+				flex-direction: column;
+				text-align: end;
+				li {
+					.navText {
+						position: relative;
+						display: inline-block;
+						font-size: 14px;
+						margin: 2px 12px;
+						text-decoration: none;
+						text-transform: uppercase;
+						font-weight: 600;
+						margin: 5px 12px;
+						margin-top: 12px;
+						font-family: $font;
+						color: #fff;
+					}
+
+					/* styler linjen som kommerfrem nåt musen holdes over et menupunkt */
+					.navText::before {
+						content: "";
+						position: absolute;
+						left: 0;
+						bottom: 0;
+						width: 100%;
+						height: 2px;
+						background-color: #fff;
+						border-radius: 4px;
+						scale: 0 1;
+						transform-origin: left;
+						transition: scale 0.5s;
+					}
+
+					.navText:hover::before {
+						scale: 1;
+						transform-origin: right;
+					}
+				}
+			}
+		}
+		&.activeMobil {
+			display: block;
+			right: 0;
+		}
+	}
+}
+@keyframes backgroundSlide {
+	0% {
+		background-position: 100% 0;
+	}
+	100% {
+		background-position: 0 0;
+	}
+}

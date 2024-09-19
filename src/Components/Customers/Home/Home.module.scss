@@ -38,7 +38,8 @@
 			background-color: $BLUSH-col;
 			margin-top: 16px;
 			.article {
-				padding: 32px 128px;
+				// padding: 32px 128px;
+				padding: 32px 18px;
 				h2 {
 					font-family: $font;
 					font-size: 16px;
@@ -66,6 +67,36 @@
 			padding: 0 127px;
 
 			gap: 32px;
+		}
+	}
+}
+
+//mobil
+@media (max-width: 768px) {
+	.contentWrapper {
+		.slideShowWrapper {
+			.line {
+				margin-top: 472px;
+			}
+		}
+		.estateCard {
+			flex-direction: column;
+		}
+		.estateCard a:nth-child(2) {
+			margin-top: 0;
+		}
+		.review {
+			.reviewContent {
+				.article {
+					padding: 32px 18px;
+					text-align: center;
+				}
+			}
+		}
+		.emloyeesWrapper {
+			.staffSection {
+				flex-direction: column;
+			}
 		}
 	}
 }

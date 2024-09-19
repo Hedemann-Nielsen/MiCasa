@@ -96,7 +96,7 @@ export const Header = () => {
 												))}
 											</ul>
 										) : (
-											<p>No results found.</p>
+											<p>Ingen boliger matcher din søgning</p>
 										)}
 									</div>
 								)}

@@ -25,7 +25,7 @@ export const CommentForm = ({
 			<h1 className={globalStyle.title}>Ændre din kommentar</h1>
 
 			<p className={globalStyle.text}>Din nuverende kommentar</p>
-			<h3 className={globalStyle.subtitle4}>
+			<h3 className={globalStyle.subtitle3}>
 				{selectedComment?.title} <span>(overskrift kan ikke ændres)</span>
 			</h3>
 			<p>{selectedComment?.content}</p>

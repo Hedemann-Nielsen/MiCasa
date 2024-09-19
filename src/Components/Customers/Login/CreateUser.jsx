@@ -56,6 +56,10 @@ export const CreateUser = () => {
 	return (
 		<PageWrapper title="Opret bruger">
 			<form className={style.createUser} onSubmit={handleSubmit(onSubmit)}>
+				<h1 className={globalStyle.title}> opret bruger</h1>
+				<p className={globalStyle.text}>
+					Udfyld felterne her under for at oprette en bruger
+				</p>
 				<input
 					className={`${globalStyle.input} ${
 						errors.email ? globalStyle.errorInput : ""

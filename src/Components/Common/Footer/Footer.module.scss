@@ -37,7 +37,7 @@
 		}
 	}
 	.rightSection {
-		text-align: right;
+		text-align: center;
 		h3 {
 			@include subtitle3;
 			color: $BG-col;
@@ -81,6 +81,28 @@
 				line-height: 21px;
 				background-color: $ROSE-col;
 				border-radius: 0 4px 4px 0;
+			}
+		}
+	}
+}
+
+//mobil
+@media (max-width: 768px) {
+	.footer {
+		h1 {
+			text-align: center;
+		}
+		.footerContainer {
+			flex-direction: column;
+			text-align: center;
+			section {
+				margin: 24px 0;
+			}
+		}
+		.rightSection {
+			text-align: center;
+			.newsLetterWrapper {
+				justify-content: center;
 			}
 		}
 	}
