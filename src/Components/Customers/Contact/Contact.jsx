@@ -79,10 +79,11 @@ Din besked er sendt til ${selectedEmployee.firstname} ${selectedEmployee.lastnam
 					<h2 className={globalStyle.title}>Tak for din besked</h2>
 					<p className={globalStyle.text}> {modalMessage1}</p>
 					<p className={globalStyle.text}> {modalMessage2}</p>
-
-					<button onClick={closeModal} className={globalStyle.styledBtn}>
-						Luk
-					</button>
+					<span className={globalStyle.btnWrapper}>
+						<button onClick={closeModal} className={globalStyle.styledBtn}>
+							Luk
+						</button>
+					</span>
 				</div>
 			</Modal>
 		</PageWrapper>

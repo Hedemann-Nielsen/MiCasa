@@ -114,7 +114,7 @@ export const ContactForm = ({
 				)}
 			</div>
 
-			<div className={style.buttonWrapper}>
+			<div className={globalStyle.btnWrapper}>
 				<button type="submit" className={globalStyle.styledBtn}>
 					Send
 				</button>
