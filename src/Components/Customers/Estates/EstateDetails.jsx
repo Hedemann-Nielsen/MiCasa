@@ -5,10 +5,10 @@ import { useEstateData } from "../../Hooks/EstateData.jsx";
 import { useEstateImagesRelData } from "../../Hooks/EstateImagesRelData.jsx";
 import { useAuth } from "../../../Providers/AuthProvider";
 import { useSupabase } from "../../../Providers/SupabaseProvider.jsx";
-import { ContactCard } from "./ContactCard.jsx";
+import { ContactCard } from "./EstateDetails/ContactCard.jsx";
 import { useFavoritsData } from "../../Hooks/FavoritsData.jsx";
-import { FactsforEstate } from "./FactsforEstate.jsx";
-import { PrimaryDetails } from "./PrimaryDetails.jsx";
+import { FactsforEstate } from "./EstateDetails/FactsforEstate.jsx";
+import { PrimaryDetails } from "./EstateDetails/PrimaryDetails.jsx";
 
 import style from "./EstateDetails.module.scss";
 

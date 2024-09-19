@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { EstateCard } from "../../EstateCards/EstateCard.jsx";
+import { EstateCard } from "../EstateCards/EstateCard.jsx";
 import { useEstateData } from "../../Hooks/EstateData.jsx";
 import { useEstateImagesRelData } from "../../Hooks/EstateImagesRelData.jsx";
 import { useReviewsData } from "../../Hooks/ReviewsData";

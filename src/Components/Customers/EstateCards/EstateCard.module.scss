@@ -1,10 +1,14 @@
-@use "../../Styles/Helpers/Mixinx" as *;
-@use "../../Styles/Helpers/variables" as *;
+@use "../../../Styles/Helpers/Mixinx" as *;
+@use "../../../Styles/Helpers/variables" as *;
 
 .card {
 	border-radius: 8px;
 	background-color: $BG-col;
 	box-shadow: 0px 4px 10px 0px #00000040;
+	max-width: 384px;
+	&:hover {
+		transform: scale(1.05);
+	}
 
 	figure {
 		margin: 16px;

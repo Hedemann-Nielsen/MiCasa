@@ -12,10 +12,11 @@
 		}
 	}
 	.estateCard {
-		margin-top: 32px;
+		// margin-top: 32px;
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
 		gap: 32px;
+		margin: 32px;
 	}
 }
 

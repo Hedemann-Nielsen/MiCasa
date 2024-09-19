@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PageWrapper } from "../../Common/Wrappers/PageWrapper";
-import { EstateCard } from "../../EstateCards/EstateCard.jsx";
+import { EstateCard } from "../EstateCards/EstateCard.jsx";
 import { useEstateData } from "../../Hooks/EstateData.jsx";
 import { useEstateImagesRelData } from "../../Hooks/EstateImagesRelData.jsx";
 import { useEstateTypeData } from "../../Hooks/EstateTypesData.jsx";

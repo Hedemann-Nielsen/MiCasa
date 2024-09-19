@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-import style from "./EstateDetails.module.scss";
+import style from "../EstateDetails.module.scss";
 
 export const FactsforEstate = ({
 	estate,

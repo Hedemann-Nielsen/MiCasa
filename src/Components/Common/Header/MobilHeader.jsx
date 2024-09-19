@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Fade as Hamburger } from "hamburger-react";
 import { MenuData } from "../../Static/MenuData.jsx";
@@ -7,9 +7,19 @@ import { MenuData } from "../../Static/MenuData.jsx";
 import logo from "../../../assets/logo/Logo.png";
 import style from "./MobilHeader.module.scss";
 import globalStyle from "../../../Styles/GlobalStyles.module.scss";
+import { useAuth } from "../../../Providers/AuthProvider.jsx";
+
 export const MobilHeader = () => {
 	const [isOpen, setOpen] = useState(false);
+	const loginData = useAuth();
+	const [userName, setUserName] = useState();
 
+	useEffect(() => {
+		if (loginData) {
+			const user = loginData?.loginData?.user?.email.split("@")[0];
+			setUserName(user);
+		}
+	}, [loginData]);
 	const handleMenuClick = () => {
 		setOpen(false);
 	};
@@ -42,6 +52,9 @@ export const MobilHeader = () => {
 						/>
 					</span>
 					<ul>
+						<li>
+							<p className={style.user}>velkommen {userName}</p>
+						</li>
 						{MenuData &&
 							MenuData.map((menu) => {
 								return (

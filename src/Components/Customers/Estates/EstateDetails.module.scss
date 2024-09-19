@@ -57,6 +57,12 @@
 				border: solid 1px $GRAY-col;
 				border-radius: 50%;
 				cursor: pointer;
+
+				&:hover {
+					transform: scale(1.1);
+					background-color: $ROSE-col;
+					transition: transform 0.2s ease;
+				}
 			}
 		}
 

@@ -1,5 +1,5 @@
-import style from "./ContactCard.module.scss";
-import globalStyle from "../../../Styles/Globalstyles.module.scss";
+import style from "../ContactCard.module.scss";
+import globalStyle from "../../../../Styles/Globalstyles.module.scss";
 
 export const ContactCard = ({
 	firstname,
