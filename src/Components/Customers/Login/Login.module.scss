@@ -4,6 +4,7 @@
 .loginWrapper {
 	display: flex;
 	flex-direction: column;
+
 	.form {
 		display: flex;
 		flex-direction: column;
@@ -21,6 +22,9 @@
 				text-decoration: underline;
 			}
 		}
+	}
+	.likesTitle {
+		margin-top: 32px;
 	}
 }
 
@@ -70,6 +74,7 @@
 		h2 {
 			text-align: center;
 		}
+
 		.form {
 			input {
 				width: 80%;

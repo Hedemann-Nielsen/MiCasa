@@ -7,7 +7,7 @@ import { Modal } from "../../Modal/Modal";
 import { NotLogedin } from "./NotLogedin";
 import { ChangePassword } from "./ChangePassword";
 import { useClearMessageHandler } from "../../Utils/ClearMessages";
-
+import { useUserFavoritsData } from "../../Hooks/UserFavoritsData";
 import { CommentsTable } from "./CommentsTable";
 import { LogoutButton } from "./LogoutButton";
 import { CommentForm } from "./CommentForm";
@@ -22,6 +22,10 @@ export const Login = () => {
 	const [selectedComment, setSelectedComment] = useState(null); // State til valgte kommentar
 	const [isModalOpen, setIsModalOpen] = useState(false); // State til at styre modalens synlighed
 	const [user, setUser] = useState();
+	const { userfavoritsData, fetchFavorits } = useUserFavoritsData({
+		userId: loginData?.user?.id,
+	});
+
 	const { commentsData, fetchComments } = useCommentsData({
 		userId: loginData?.user?.id,
 	});
@@ -72,7 +76,7 @@ export const Login = () => {
 	// Funktion til at slette kommentar
 	const handleDeleteComment = async (review) => {
 		try {
-			const { data, error } = await supabase
+			const { error } = await supabase
 				.from("reviews")
 				.delete()
 				.eq("id", review.id);
@@ -90,6 +94,26 @@ export const Login = () => {
 		}
 	};
 
+	//funktion til at slette like
+	const handleDeleteLike = async (like) => {
+		try {
+			const { error } = await supabase
+				.from("favorites")
+				.delete()
+				.eq("id", like.id);
+			if (error) {
+				throw error;
+			} else {
+				setSuccessMessage("Dit like blev slettet");
+				clearMessages();
+				alert("Dit like er slettet");
+				fetchFavorits();
+			}
+		} catch (error) {
+			setErrorMessage("Fejl ved sletning af like");
+			console.error("Error deleting like:", error);
+		}
+	};
 	// Funktion som håndtere log ud ved hjælp af supabase
 	const handleLogout = async () => {
 		try {
@@ -126,7 +150,7 @@ export const Login = () => {
 					<section className={style.mySite}>
 						<div className={style.leftSite}>
 							<div className={style.loginWrapper}>
-								<h2 className={style.subtitle}>
+								<h2 className={globalStyle.subtitle2}>
 									Administration af anmeldelser
 								</h2>
 								<CommentsTable
@@ -134,8 +158,13 @@ export const Login = () => {
 									handleEditComment={handleEditComment}
 									handleDeleteComment={handleDeleteComment}
 								/>
-								<h2 className={style.subtitle}>Administration af likes</h2>
-								<LikesTable />
+								<h2 className={`${style.likesTitle} ${globalStyle.subtitle2}`}>
+									Administration af likes
+								</h2>
+								<LikesTable
+									userfavoritsData={userfavoritsData}
+									handleDeleteLike={handleDeleteLike}
+								/>
 							</div>
 						</div>
 						<div className={style.rightSite}>

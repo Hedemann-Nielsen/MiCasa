@@ -1,4 +1,5 @@
 @use "../../../Styles/Helpers/variables" as *;
+@use "../../../Styles/Helpers/Mixinx" as *;
 
 .commentsTable {
 	width: 80%;
@@ -10,6 +11,14 @@
 	td {
 		border-bottom: solid 1px black;
 		padding: 3px 0;
+	}
+	td {
+		a {
+			@include text;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
 	}
 	table {
 		font-size: 16px;
@@ -31,22 +40,11 @@
 	tr th:nth-child(2) {
 		width: 40%;
 	}
-	tr th:last-child {
+	tr th:last-child,
+	td:last-child {
 		text-align: right;
 	}
-	td:nth-child(3) {
-		width: 1px;
-	}
-	td:last-child {
-		// width: ;
 
-		width: fit-content;
-	}
-
-	.edit {
-		cursor: pointer;
-		color: $succ-col;
-	}
 	.delete {
 		cursor: pointer;
 		color: $err-col;
