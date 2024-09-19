@@ -1,4 +1,3 @@
-import { useForm } from "react-hook-form";
 import { FaStarOfLife } from "react-icons/fa";
 
 import globalStyle from "../../../Styles/Globalstyles.module.scss";
@@ -30,12 +29,10 @@ export const ContactForm = ({
 					}`}
 					{...register("name", { required: "Navn er påkrævet" })}
 				/>
-				{errors.name && (
-					<span className={globalStyle.errorMessage}>
-						{errors.name.message}
-					</span>
-				)}
 			</div>
+			{errors.name && (
+				<span className={globalStyle.errorMessage}>{errors.name.message}</span>
+			)}
 
 			<div className={style.inputWrapper}>
 				<label htmlFor="email">
@@ -58,12 +55,10 @@ export const ContactForm = ({
 						},
 					})}
 				/>
-				{errors.email && (
-					<span className={globalStyle.errorMessage}>
-						{errors.email.message}
-					</span>
-				)}
 			</div>
+			{errors.email && (
+				<span className={globalStyle.errorMessage}>{errors.email.message}</span>
+			)}
 
 			<div className={style.inputWrapper}>
 				<label htmlFor="employee">
@@ -86,12 +81,12 @@ export const ContactForm = ({
 						</option>
 					))}
 				</select>
-				{errors.employee && (
-					<span className={globalStyle.errorMessage}>
-						{errors.employee.message}
-					</span>
-				)}
 			</div>
+			{errors.employee && (
+				<span className={globalStyle.errorMessage}>
+					{errors.employee.message}
+				</span>
+			)}
 
 			<div className={style.inputWrapper}>
 				<label htmlFor="message">
@@ -107,12 +102,12 @@ export const ContactForm = ({
 					}`}
 					{...register("message", { required: "Besked er påkrævet" })}
 				/>
-				{errors.message && (
-					<span className={globalStyle.errorMessage}>
-						{errors.message.message}
-					</span>
-				)}
 			</div>
+			{errors.message && (
+				<span className={globalStyle.errorMessage}>
+					{errors.message.message}
+				</span>
+			)}
 
 			<div className={globalStyle.btnWrapper}>
 				<button type="submit" className={globalStyle.styledBtn}>
