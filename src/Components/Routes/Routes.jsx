@@ -4,7 +4,6 @@ import { Layout } from "../Layout/Layout.jsx";
 import { HomePage } from "../../Pages/HomePage.jsx";
 import { FallbackPage } from "../../Pages/FallbackPag.jsx";
 import { ContactPage } from "../../Pages/ContactPage.jsx";
-import { SearchPage } from "../../Pages/SearchPage.jsx";
 import { EstatesPage } from "../../Pages/EstatesPage.jsx";
 
 import { Login } from "../../Components/Customers/Login/Login.jsx";
@@ -55,11 +54,6 @@ export const routes = createBrowserRouter([
 						element: <CreateUser />,
 					},
 				],
-			},
-
-			{
-				path: "/find",
-				element: <SearchPage />,
 			},
 
 			{

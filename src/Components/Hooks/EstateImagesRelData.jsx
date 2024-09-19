@@ -11,7 +11,9 @@ export const useEstateImagesRelData = () => {
 				if (supabase) {
 					const { data, error } = await supabase
 						.from("estate_image_rel")
-						.select("*, images(image_url)");
+						.select("*, images(image_url)")
+						.eq("is_primary", true);
+
 					if (error) {
 						console.error(
 							"Fejl ved hentning af data fra Employees:",
