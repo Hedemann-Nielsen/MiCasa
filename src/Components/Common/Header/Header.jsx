@@ -7,7 +7,6 @@ import logo from "../../../assets/logo/Logo.png";
 import { FaSearch } from "react-icons/fa";
 
 import style from "./Header.module.scss";
-import globalStyle from "../../../Styles/GlobalStyles.module.scss";
 
 export const Header = () => {
 	const [searchQuery, setSearchQuery] = useState(""); // State for the search query

@@ -8,7 +8,7 @@
 	z-index: 10;
 	background-color: $ROSE-col;
 	height: auto;
-	z-index: 500;
+	// z-index: 500;
 
 	.reviewBtn {
 		border-width: 0px 1px 0px 1px;
@@ -59,7 +59,7 @@
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
-				margin: 10px 0;
+				margin-top: 10px;
 
 				label {
 					@include text;
@@ -93,6 +93,28 @@
 					font-size: 14px;
 					font-weight: 400;
 					line-height: 21px;
+				}
+			}
+			.errorMsgWrapper {
+				display: flex;
+				justify-content: end;
+				margin-left: 100px;
+			}
+			span {
+				margin-left: 0;
+				padding-left: 0;
+			}
+		}
+		.notLoggedIn {
+			display: flex;
+			justify-content: center;
+			align-items: end;
+			height: 100px;
+			a {
+				@include text;
+				color: #fff;
+				&:hover {
+					text-decoration: underline;
 				}
 			}
 		}
