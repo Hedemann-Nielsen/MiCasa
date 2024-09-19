@@ -44,10 +44,14 @@ Din besked er sendt til ${selectedEmployee.firstname} ${selectedEmployee.lastnam
 			setMessage(response.message);
 		}
 	};
+
+	//funktion der åbner modal vindue
 	const setShowModal = () => {
 		setModalIsOpen(true);
 		console.log("modal is open");
 	};
+
+	//funktion der lukker modal vindue
 	const closeModal = () => {
 		setModalIsOpen(false);
 	};

@@ -7,9 +7,11 @@ import { Modal } from "../../Modal/Modal";
 import { NotLogedin } from "./NotLogedin";
 import { ChangePassword } from "./ChangePassword";
 import { useClearMessageHandler } from "../../Utils/ClearMessages";
+
 import { CommentsTable } from "./CommentsTable";
 import { LogoutButton } from "./LogoutButton";
 import { CommentForm } from "./CommentForm";
+import { LikesTable } from "./LikesTable";
 
 import globalStyle from "../../../Styles/GlobalStyles.module.scss";
 import style from "./Login.module.scss";
@@ -132,6 +134,8 @@ export const Login = () => {
 									handleEditComment={handleEditComment}
 									handleDeleteComment={handleDeleteComment}
 								/>
+								<h2 className={style.subtitle}>Administration af likes</h2>
+								<LikesTable />
 							</div>
 						</div>
 						<div className={style.rightSite}>

@@ -13,27 +13,19 @@
 	font-family: "Poppins", sans-serif;
 }
 
-html,
-body {
-	height: 100%;
-}
-
-body {
+main {
+	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
-	margin: 0;
-}
-main {
-	flex: 1;
 }
 
 footer {
-	position: relative;
+	margin-top: auto;
 	z-index: 100;
 	background-color: $BLACK-col;
 }
 
-// sikre at både html, body, input felter osv har den korrekte skrift type
+// sikre at alle tags har den korrekte skrift type
 html,
 body,
 input,
@@ -59,8 +51,8 @@ a {
 button {
 	font-size: 1rem;
 	cursor: pointer;
-	background-color: transparent; /* optional, depending on your design */
-	border: none; /* optional, depending on your design */
+	background-color: transparent;
+	border: none;
 }
 
 .title {
@@ -77,10 +69,6 @@ button {
 
 .text {
 	@include text;
-}
-
-.htmlContent {
-	white-space: pre-line;
 }
 
 .errorMessage {
@@ -157,10 +145,6 @@ button {
 	}
 }
 
-.unstyledBtn {
-	@include unstyledBtn;
-}
-
 .input {
 	width: 317px;
 	height: 32px;
@@ -197,11 +181,11 @@ main {
 	background-color: transparent !important;
 }
 
-.HomePageWrapper {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-}
+// .HomePageWrapper {
+// 	display: flex;
+// 	flex-direction: column;
+// 	min-height: 100vh;
+// }
 
 .pageWrapper {
 	height: 100%;

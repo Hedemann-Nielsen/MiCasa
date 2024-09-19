@@ -4,5 +4,5 @@ export const HomePageWrapper = ({ title, children }) => {
 	// Sætter page title
 	document.title = title;
 
-	return <section className={globalStyle.HomePageWrapper}>{children}</section>;
+	return <section className={globalStyle.homePageWrapper}>{children}</section>;
 };

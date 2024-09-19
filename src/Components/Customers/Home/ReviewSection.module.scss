@@ -1,0 +1,105 @@
+@use "../../../Styles/Helpers/Mixinx" as *;
+@use "../../../Styles/Helpers/variables" as *;
+
+.writeReview {
+	position: relative;
+
+	text-align: center;
+	z-index: 10;
+	background-color: $ROSE-col;
+	height: auto;
+	z-index: 500;
+
+	.reviewBtn {
+		border-width: 0px 1px 0px 1px;
+		border-style: solid;
+		border-color: #d5d5d5;
+		padding: 11px 32px 13px 32px;
+		font-family: $font;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+		text-align: center;
+		color: #ffffff;
+		background-color: $ROSE-col;
+		&:hover {
+			background-color: $GRAY-col;
+		}
+		// transition: background-color 0.8s ease;
+		// transition-delay: 0.5s;
+		&.active {
+			background-color: $GRAY-col;
+			border: none;
+		}
+	}
+
+	.writeReviewContent {
+		max-height: 0;
+		width: 100%;
+		overflow: hidden;
+		transition: max-height 0.5s ease-out;
+		background-color: $GRAY-col;
+		z-index: 0;
+		box-shadow: 0px 4px 10px 0px #00000040;
+
+		form {
+			width: 444px;
+			margin: 0 auto;
+
+			.closeIcsonWrapper {
+				display: flex;
+				justify-content: end;
+				color: #fff;
+				font-size: 24px;
+				padding: 16px 0;
+				cursor: pointer;
+			}
+
+			.inputWrapper {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin: 10px 0;
+
+				label {
+					@include text;
+					color: #fff;
+					display: flex;
+					align-self: start;
+				}
+
+				input {
+					width: 317px;
+					height: 32px;
+					padding: 6px 16px;
+					border-radius: 4px;
+					border: 1px;
+					outline: none;
+				}
+
+				textarea {
+					width: 317px;
+					height: 157px;
+					padding: 13px;
+					border-radius: 4px;
+					border: 1px;
+					resize: none;
+					outline: none;
+				}
+
+				input::placeholder,
+				textarea::placeholder {
+					font-family: $font;
+					font-size: 14px;
+					font-weight: 400;
+					line-height: 21px;
+				}
+			}
+		}
+	}
+
+	.writeReviewContent.show {
+		max-height: 550px;
+		padding-bottom: 75px;
+	}
+}

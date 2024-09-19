@@ -51,105 +51,18 @@
 			}
 		}
 	}
-	.writeReview {
-		position: relative;
-		z-index: 10;
-		background-color: $ROSE-col;
-		height: 48px;
-		z-index: 500;
-		// margin-bottom: 400px;
-		.reviewBtn {
-			border-width: 0px 1px 0px 1px;
-			border-style: solid;
-			border-color: #d5d5d5;
-			height: 48px;
-			padding: 11px 32px 13px 32px;
-			font-family: $font;
-			font-size: 16px;
-			font-weight: 400;
-			line-height: 24px;
-			text-align: center;
-			color: #ffffff;
-			background-color: $GRAY-col;
-		}
-		.writeReviewContent {
-			display: none;
-			position: absolute;
-			top: 48px;
-			left: 0;
-			width: 100%;
-			background-color: $GRAY-col;
-			height: 417px;
-			z-index: 0;
-			form {
-				width: 444px;
-				margin: 0 auto;
-				.closeIcsonWrapper {
-					display: flex;
-					justify-content: end;
-					color: #fff;
-					font-size: 24px;
-					padding: 16px 0;
-					cursor: pointer;
-				}
-				.inputWrapper {
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					margin: 10px 0;
-					label {
-						@include text;
-						color: #fff;
-						display: flex;
-						align-self: start;
-					}
-					input {
-						width: 317px;
-						height: 32px;
-						padding: 6px 16px;
-						border-radius: 4px;
-						border: 1px;
-					}
-					textarea {
-						width: 317px;
-						height: 157px;
-						padding: 13px;
-						border-radius: 4px;
-						border: 1px;
-						resize: none;
-					}
-					input::placeholder,
-					textarea::placeholder {
-						font-family: $font;
-						font-size: 14px;
-						font-weight: 400;
-						line-height: 21px;
-					}
-				}
-			}
-		}
-
-		.writeReviewContent.show {
-			display: block;
-			animation: slideDown 0.5s ease-out;
-		}
-	}
-	.employees {
-		padding-top: 96px;
-		background-color: green;
+	.emloyeesWrapper {
+		padding: 96px 0;
 		h1 {
 			text-align: center;
+			padding-bottom: 16px;
 		}
-	}
-}
+		.staffSection {
+			display: flex;
+			justify-content: center;
+			padding: 0 127px;
 
-@keyframes slideDown {
-	from {
-		opacity: 0;
-		transform: translateY(-100%);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
+			gap: 32px;
+		}
 	}
 }

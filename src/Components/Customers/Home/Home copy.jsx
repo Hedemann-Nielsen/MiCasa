@@ -6,18 +6,16 @@ import { useReviewsData } from "../../Hooks/ReviewsData";
 import { formatDate } from "../../Utils/DateUtils.jsx";
 import { SlideShow } from "./SlideShow.jsx";
 
+import { IoCloseSharp } from "react-icons/io5";
+
 import style from "./Home.module.scss";
 import globalStyle from "../../../Styles/GlobalStyles.module.scss";
-import { EmployeesCard } from "./EmployeesCard.jsx";
-import { useEmployeesDatas } from "../../Hooks/EmployeesData.jsx";
-import { ReviewSection } from "./ReviewSection.jsx";
 
 export const Home = () => {
 	const [isReviewFormVisible, setReviewFormVisible] = useState(false);
 	const estateData = useEstateData();
 	const estateImages = useEstateImagesRelData();
 	const reviewsData = useReviewsData();
-	const employeesData = useEmployeesDatas();
 
 	//Funktion til at flytte rundt på pladserne af dataen i arrayet
 	const shuffleArray = (array) => {
@@ -30,43 +28,18 @@ export const Home = () => {
 		return imageRel?.images?.image_url || ""; // Returnere billede eller en tom text streng
 	};
 
-	//Tag de 3 første efter der er byttet rundt på pladserne  i shuffleArray for at vise 3 boliger
+	//Tag de 3 første efter der er byttet rundt på pladserne  i shuffleArray
 	const shuffledEstates = shuffleArray([...estateData]).slice(0, 3);
 
-	//Tag den 1 første efter der er byttet rundt på pladserne i shuffleArray for at vise kommentaren
 	const shuffledReviews = shuffleArray([...reviewsData]).slice(0, 1);
 
-	//funktion der åbner formular til anmeldse
 	const openReviewForm = (e) => {
 		e.preventDefault();
 		setReviewFormVisible(!isReviewFormVisible);
 	};
-	//funktion der lukker formular til anmeldse
 	const closeReviewForm = (e) => {
 		e.preventDefault();
 		setReviewFormVisible(false);
-	};
-
-	//funktion der sender anmeldse til databasen
-	const handleSendMessage = async (formData) => {
-		const response = await updateContactMessage(formData);
-
-		if (response.success) {
-			const selectedEmployee = employees.find(
-				(e) => e.id === parseInt(formData.employee)
-			);
-			setModalMessage1(
-				`
-Din besked er sendt til ${selectedEmployee.firstname} ${selectedEmployee.lastname}.`
-			);
-			setModalMessage2(
-				`Du vil modtage svar på ${formData.email} hurtigst muligt.`
-			);
-			setShowModal(true); // Åbn modalen
-			reset();
-		} else {
-			setMessage(response.message);
-		}
 	};
 
 	return (
@@ -110,18 +83,42 @@ Din besked er sendt til ${selectedEmployee.firstname} ${selectedEmployee.lastnam
 			))}
 
 			{/* skriv en anmeldse */}
-			<ReviewSection
-				openReviewForm={openReviewForm}
-				closeReviewForm={closeReviewForm}
-				isReviewFormVisible={isReviewFormVisible}
-			/>
+			<section className={style.writeReview}>
+				<button className={style.reviewBtn} onClick={openReviewForm}>
+					Skriv en anmeldelse
+				</button>
+				<div
+					className={`${style.writeReviewContent} ${
+						isReviewFormVisible ? style.show : ""
+					}`}>
+					<form>
+						<div className={style.closeIcsonWrapper} onClick={closeReviewForm}>
+							<IoCloseSharp />
+						</div>
+						<div className={style.inputWrapper}>
+							<label htmlFor="name">Dit navn:</label>
+							<input type="text" placeholder="Indtast dit navn" />
+						</div>
+						<div className={style.inputWrapper}>
+							<label htmlFor="email">Din email::</label>
+							<input type="email" placeholder="Indtast din email" />
+						</div>
+						<div className={style.inputWrapper}>
+							<label htmlFor="comment">Kommentar:</label>
+							<textarea
+								name="comment"
+								placeholder="Skriv en kommentar"></textarea>
+						</div>
+						<div className={globalStyle.btnWrapper}>
+							<button className={globalStyle.styledBtn}>Send</button>
+						</div>
+					</form>
+				</div>
+			</section>
 
 			{/* ansatte */}
-			<section className={style.emloyeesWrapper}>
-				<h1 className={globalStyle.title}>Møn vores ansatte</h1>
-				<div className={style.staffSection}>
-					<EmployeesCard employees={employeesData} />
-				</div>
+			<section className={style.employees}>
+				<h1 className={globalStyle.title}>Mød vores ansatte</h1>
 			</section>
 		</div>
 	);
