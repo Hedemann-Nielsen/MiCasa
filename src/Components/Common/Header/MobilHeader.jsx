@@ -79,7 +79,11 @@ export const MobilHeader = () => {
 					</span>
 					<ul>
 						<li>
-							<p className={style.user}>velkommen {userName}</p>
+							{loginData.loginData ? (
+								<p className={style.user}>velkommen {userName}</p>
+							) : (
+								<span></span>
+							)}
 
 							<div className={style.searchWrapper}>
 								<div className={style.searchbarContent}>
@@ -115,7 +119,7 @@ export const MobilHeader = () => {
 								);
 							})}
 						<li>
-							{loginData ? (
+							{loginData.loginData ? (
 								<NavLink
 									to="/login"
 									className={style.navText}

@@ -28,6 +28,7 @@ export const ContactForm = ({
 						errors.name ? globalStyle.errorInput : ""
 					}`}
 					{...register("name", { required: "Navn er påkrævet" })}
+					autoComplete="name"
 				/>
 			</div>
 			{errors.name && (
@@ -54,6 +55,7 @@ export const ContactForm = ({
 							message: "Ugyldig emailadresse",
 						},
 					})}
+					autoComplete="email"
 				/>
 			</div>
 			{errors.email && (
@@ -69,10 +71,11 @@ export const ContactForm = ({
 				</label>
 				<select
 					name="employees"
+					defaultValue="1"
 					{...register("employee", {
 						required: "Du skal vælge en medarbejder",
 					})}>
-					<option value="" disabled selected>
+					<option value="" selected disabled>
 						Vælg en medarbejder
 					</option>
 					{employees.map((employee) => (
@@ -90,17 +93,19 @@ export const ContactForm = ({
 
 			<div className={style.inputWrapper}>
 				<label htmlFor="message">
-					Besked:{" "}
+					Besked:
 					<span className={style.requiredStar}>
 						<FaStarOfLife />
 					</span>
 				</label>
 				<textarea
 					placeholder="Skriv en besked"
+					name="message"
 					className={`${globalStyle.input} ${
 						errors.message ? globalStyle.errorInput : ""
 					}`}
 					{...register("message", { required: "Besked er påkrævet" })}
+					autoComplete="message"
 				/>
 			</div>
 			{errors.message && (

@@ -141,11 +141,11 @@ export const Login = () => {
 	return (
 		<>
 			{!loginData ? (
-				<PageWrapper>
+				<PageWrapper title="login">
 					<NotLogedin />
 				</PageWrapper>
 			) : (
-				<PageWrapper>
+				<PageWrapper title={`velkommen ${user}`}>
 					<h1 className={globalStyle.title}>Din side</h1>
 					<section className={style.mySite}>
 						<div className={style.leftSite}>

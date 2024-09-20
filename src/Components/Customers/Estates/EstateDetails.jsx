@@ -27,6 +27,11 @@ export const EstateDetails = () => {
 	const [count, setCount] = useState();
 	const estate = estateData.find((estate) => estate.id === parseInt(estate_id));
 
+	useEffect(() => {
+		// Scroll til toppen ved indlæsning
+		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+	}, []);
+
 	//funktion der overvåger om der er en bruger der er logget ind.
 	useEffect(() => {
 		if (!userId) {
@@ -152,7 +157,7 @@ export const EstateDetails = () => {
 				<img src={getImageForEstate(estate.id)} alt={estate.address} />
 			</div>
 			<div className={style.line}></div>
-			<PageWrapper title={`detaljer om ${estate.address}`}>
+			<PageWrapper title={`Detaljer om ${estate.address}`}>
 				<div className={style.estateDetails}>
 					<PrimaryDetails
 						estate={estate}

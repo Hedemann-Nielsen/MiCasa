@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Modal } from "../../Modal/Modal.jsx";
 import { useSupabase } from "../../../Providers/SupabaseProvider";
+import { useAuth } from "../../../Providers/AuthProvider.jsx";
 
 import { CiAt } from "react-icons/ci";
 
@@ -11,8 +12,9 @@ import style from "./Footer.module.scss";
 import globalStyle from "../../../Styles/GlobalStyles.module.scss";
 
 export const Footer = () => {
-	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const { supabase } = useSupabase();
+	const loginData = useAuth();
+	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [message, setMessage] = useState("");
 
 	const {
@@ -68,6 +70,25 @@ export const Footer = () => {
 									</li>
 								);
 							})}
+						<li className={style.menuLink}>
+							{loginData.loginData ? (
+								<NavLink
+									to="/login"
+									className={({ isActive }) =>
+										isActive ? style.activeLink : ""
+									}>
+									Min side
+								</NavLink>
+							) : (
+								<NavLink
+									to="/login"
+									className={({ isActive }) =>
+										isActive ? style.activeLink : ""
+									}>
+									Login
+								</NavLink>
+							)}
+						</li>
 					</ul>
 				</nav>
 				<section className={style.rightSection}>

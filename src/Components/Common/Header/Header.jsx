@@ -17,6 +17,7 @@ export const Header = () => {
 	const [userName, setUserName] = useState();
 
 	useEffect(() => {
+		// console.log("loginData:", loginData);
 		if (loginData) {
 			const user = loginData?.loginData?.user?.email.split("@")[0];
 			setUserName(user);
@@ -66,7 +67,7 @@ export const Header = () => {
 									);
 								})}
 							<li className={style.menuLink}>
-								{loginData ? (
+								{loginData.loginData ? (
 									<NavLink
 										to="/login"
 										className={({ isActive }) =>
@@ -106,9 +107,13 @@ export const Header = () => {
 							</div>
 						</ul>
 					</nav>
-					<div className={style.loginName}>
-						{loginData ? <p>Du er logget ind som: {userName}</p> : ""}
-					</div>
+					{loginData.loginData ? (
+						<div className={style.loginName}>
+							<p>Du er logget ind som {userName}</p>
+						</div>
+					) : (
+						<span></span>
+					)}
 				</div>
 			</header>
 		</>

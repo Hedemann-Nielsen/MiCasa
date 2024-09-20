@@ -5,12 +5,15 @@ import { Header } from "../Common/Header/Header.jsx";
 import { MobilHeader } from "../Common/Header/MobilHeader.jsx";
 import { InnerWrapper } from "../Common/Wrappers/InnerWrapper.jsx";
 import { useResizeHandler } from "../Common/ResizeHandler/ResizeHandler.jsx";
+import { ScrollToTop } from "../Common/ScrollToTop/ScrollToTop.jsx";
 
 export const Layout = () => {
 	const { width } = useResizeHandler();
 
 	return (
 		<>
+			{/* Sikre at siden scroller op til toppen på alle sider */}
+			<ScrollToTop />
 			{/* tjekker om viduetsstørrelse er under 768px, hvis den er det vises mobil	header, hvis den er over vises desktop header */}
 			{width <= 768 ? <MobilHeader /> : <Header />}
 			<InnerWrapper>

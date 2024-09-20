@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import style from "./LikesTable.module.scss";
 
 export const LikesTable = ({ userfavoritsData, handleDeleteLike }) => {
-	console.log(userfavoritsData);
-
 	return (
 		<table className={style.commentsTable}>
 			<thead>

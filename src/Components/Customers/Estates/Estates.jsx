@@ -69,7 +69,7 @@ export const Estates = () => {
 	const estatesToDisplay = getFilteredAndSortedEstates();
 
 	return (
-		<PageWrapper title={"til salg"}>
+		<PageWrapper title={"Til salg"}>
 			<div className={style.estateWrapper}>
 				<h1 className={globalStyle.title}>Boliger til salg</h1>
 				<div className={style.selectWrapper}>
@@ -79,7 +79,9 @@ export const Estates = () => {
 						id="estateType"
 						value={selectedType}
 						onChange={handleTypeChange}>
-						<option value="">Sorter</option>
+						<option value="" disabled>
+							Sorter
+						</option>
 						{estateType &&
 							estateType.map((type, index) => {
 								return (
@@ -95,7 +97,9 @@ export const Estates = () => {
 						id=""
 						value={selectedSort}
 						onChange={handleSortChange}>
-						<option value="">Filtrer</option>
+						<option value="" disabled>
+							Filtrer
+						</option>
 						<option value="price-asc">Pris - stigende</option>
 						<option value="price-desc">Pris - faldende</option>
 						<option value="floor_space">Antal kvadratmeter</option>
