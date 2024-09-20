@@ -251,7 +251,19 @@ main {
 		}
 	}
 }
-
+//mobil
+@media (max-width: 768px) {
+	.iconsModal {
+		.iconModal {
+			img {
+				width: 100%;
+			}
+			.closeIcsonWrapper {
+				right: 0;
+			}
+		}
+	}
+}
 .overlay {
 	position: fixed;
 	top: 0;

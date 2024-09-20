@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { CookieBanner } from "../CookieBanner/CookieBanner.jsx";
 import { Footer } from "../Common/Footer/Footer.jsx";
 import { Header } from "../Common/Header/Header.jsx";
@@ -11,7 +11,7 @@ export const Layout = () => {
 
 	return (
 		<>
-			{/* tjekker om viduetsstørrelse er under 768px, hvis den er det vises mobil	navigation, hvis den er over vises default subnavigatio  */}
+			{/* tjekker om viduetsstørrelse er under 768px, hvis den er det vises mobil	header, hvis den er over vises desktop header */}
 			{width <= 768 ? <MobilHeader /> : <Header />}
 			<InnerWrapper>
 				<main>
