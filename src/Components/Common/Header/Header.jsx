@@ -3,14 +3,16 @@ import { NavLink, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useEstateData } from "../../Hooks/EstateData.jsx";
 import { useAuth } from "../../../Providers/AuthProvider.jsx";
+import { SearchQuery } from "./searchQuery.jsx";
+
 import logo from "../../../assets/logo/Logo.png";
 import { FaSearch } from "react-icons/fa";
 
 import style from "./Header.module.scss";
 
 export const Header = () => {
-	const [searchQuery, setSearchQuery] = useState(""); // State for the search query
-	const estateData = useEstateData(); // Fetch estate data
+	const [searchQuery, setSearchQuery] = useState("");
+	const estateData = useEstateData();
 	const loginData = useAuth();
 	const [userName, setUserName] = useState();
 
@@ -21,35 +23,21 @@ export const Header = () => {
 		}
 	}, [loginData]);
 
-	// Function det håndtere søge feltet
+	// Function det håndtere søge feltet og opdatere med den aktuelle værdi
 	const handleSearchChange = (e) => {
 		setSearchQuery(e.target.value);
 	};
 
 	// Funktion der filtrere data fra fetchen baseret på forspørgslen
 	const filteredEstates = estateData.filter((estate) => {
+		//starter med at ændre alt til små bogstaver, for at kunne matche søøgningen
 		const query = searchQuery.toLowerCase();
 
-		// Konverter numeriske felter til strings for at matche søgeforespørgslen
-		const price = estate.price?.toString() || "";
-		const cost = estate.cost?.toString() || "";
-		const payout = estate.payout?.toString() || "";
-		const gross = estate.gross?.toString() || "";
-		const net = estate.net?.toString() || "";
-		const numRooms = estate.num_rooms?.toString() || "";
-
+		//går igennem disse felter og checker om der er et match med værdien fra søgefeltet og returnere dataen til
 		return (
 			estate.address.toLowerCase().includes(query) ||
 			estate.cities?.name.toLowerCase().includes(query) ||
 			estate.cities?.zipcode.toString().includes(query) ||
-			estate.estate_types?.name.toLowerCase().includes(query) ||
-			estate.energy_labels?.letter.toLowerCase().includes(query) ||
-			price.includes(query) ||
-			cost.includes(query) ||
-			payout.includes(query) ||
-			gross.includes(query) ||
-			net.includes(query) ||
-			numRooms.includes(query) ||
 			estate.description.toLowerCase().includes(query)
 		);
 	});
@@ -90,27 +78,11 @@ export const Header = () => {
 										<FaSearch className={style.FaSearch} />
 									</span>
 								</div>
-								<div>
-									{/* Viser det filtrerede søge data */}
-									{searchQuery && (
-										<div className={style.searchResults}>
-											{filteredEstates.length > 0 ? (
-												<ul>
-													{filteredEstates.map((estate) => (
-														<li key={estate.id} className={style.resultLine}>
-															<Link to={`/til-salg/${estate.id}`}>
-																{estate.address}, {estate.cities.name} -{" "}
-																{estate.estate_types.name}
-															</Link>
-														</li>
-													))}
-												</ul>
-											) : (
-												<p>Ingen boliger matcher din søgning</p>
-											)}
-										</div>
-									)}
-								</div>
+								<SearchQuery
+									searchQuery={searchQuery}
+									estateData={estateData}
+									filteredEstates={filteredEstates}
+								/>
 							</div>
 						</ul>
 					</nav>

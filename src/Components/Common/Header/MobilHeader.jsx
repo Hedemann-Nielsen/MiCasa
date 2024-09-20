@@ -3,16 +3,22 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Fade as Hamburger } from "hamburger-react";
 import { MenuData } from "../../Static/MenuData.jsx";
-
-import logo from "../../../assets/logo/Logo.png";
-import style from "./MobilHeader.module.scss";
-import globalStyle from "../../../Styles/GlobalStyles.module.scss";
+import { useEstateData } from "../../Hooks/EstateData.jsx";
+import { SearchQuery } from "./searchQuery.jsx";
 import { useAuth } from "../../../Providers/AuthProvider.jsx";
 
+import logo from "../../../assets/logo/Logo.png";
+import { FaSearch } from "react-icons/fa";
+
+import style from "./MobilHeader.module.scss";
+import globalStyle from "../../../Styles/GlobalStyles.module.scss";
+
 export const MobilHeader = () => {
-	const [isOpen, setOpen] = useState(false);
 	const loginData = useAuth();
+	const estateData = useEstateData();
+	const [isOpen, setOpen] = useState(false);
 	const [userName, setUserName] = useState();
+	const [searchQuery, setSearchQuery] = useState("");
 
 	useEffect(() => {
 		if (loginData) {
@@ -23,6 +29,26 @@ export const MobilHeader = () => {
 	const handleMenuClick = () => {
 		setOpen(false);
 	};
+
+	// Function det håndtere søge feltet og opdatere med den aktuelle værdi
+	const handleSearchChange = (e) => {
+		setSearchQuery(e.target.value);
+	};
+
+	// Funktion der filtrere data fra fetchen baseret på forspørgslen
+	const filteredEstates = estateData.filter((estate) => {
+		//starter med at ændre alt til små bogstaver, for at kunne matche søøgningen
+		const query = searchQuery.toLowerCase();
+
+		//går igennem disse felter og checker om der er et match med værdien fra søgefeltet og returnere dataen til
+		return (
+			estate.address.toLowerCase().includes(query) ||
+			estate.cities?.name.toLowerCase().includes(query) ||
+			estate.cities?.zipcode.toString().includes(query) ||
+			estate.description.toLowerCase().includes(query)
+		);
+	});
+
 	return (
 		<header className={style.mobilHeader}>
 			<Link to="/home">
@@ -54,6 +80,26 @@ export const MobilHeader = () => {
 					<ul>
 						<li>
 							<p className={style.user}>velkommen {userName}</p>
+
+							<div className={style.searchWrapper}>
+								<div className={style.searchbarContent}>
+									<input
+										type="text"
+										placeholder="indtast søgeord"
+										className={style.input}
+										value={searchQuery}
+										onChange={handleSearchChange}
+									/>
+									<span className={style.faSearchWrapper}>
+										<FaSearch className={style.FaSearch} />
+									</span>
+								</div>
+								<SearchQuery
+									searchQuery={searchQuery}
+									estateData={estateData}
+									filteredEstates={filteredEstates}
+								/>
+							</div>
 						</li>
 						{MenuData &&
 							MenuData.map((menu) => {
