@@ -13,6 +13,7 @@ import { ReviewSection } from "./ReviewSection.jsx";
 import { useReviewsMessage } from "../../Hooks/ReviewMessageInsert.jsx";
 import { useAuth } from "../../../Providers/AuthProvider.jsx";
 import { Modal } from "../../Modal/Modal.jsx";
+import { generateStars } from "./StarRating/StarReviews.jsx";
 
 import style from "./Home.module.scss";
 import globalStyle from "../../../Styles/GlobalStyles.module.scss";
@@ -36,6 +37,7 @@ export const Home = () => {
 	const [modalMessage2, setModalMessage2] = useState("");
 	const [modalMessage3, setModalMessage3] = useState("");
 	const [userId, setUserId] = useState();
+	const [selectedRating, setSelectedRating] = useState(0);
 
 	//Funktion til at flytte rundt på pladserne af dataen i arrayet
 	const shuffleArray = (array) => {
@@ -72,11 +74,15 @@ export const Home = () => {
 		}
 	}, [loginData]);
 
+	const handleRatingSelect = (rating) => {
+		setSelectedRating(rating);
+	};
 	//funktion der sender anmeldse til databasen
-	const postReview = async (formData, userId) => {
+	const postReview = async (formData, userId, selectedRating) => {
 		const combinedFormData = {
 			...formData,
 			user_id: userId,
+			num_stars: selectedRating,
 		};
 		console.log(combinedFormData);
 
@@ -87,14 +93,14 @@ export const Home = () => {
 
 			setModalMessage1(
 				`
-Tak for din anmeldse ${combinedFormData.name}.`
+Tak for din anmeldse ${combinedFormData?.name}.`
 			);
 			setModalMessage2(
-				`Overskrift: ${combinedFormData.title}
+				`Overskrift: ${combinedFormData?.title}
 `
 			);
 			setModalMessage3(
-				`Anmeldse: ${combinedFormData.comment}
+				`Anmeldse: ${combinedFormData?.comment}
 `
 			);
 
@@ -147,6 +153,9 @@ Tak for din anmeldse ${combinedFormData.name}.`
 					<h1 className={globalStyle.title}>Det siger vores kunder</h1>
 					<div className={style.reviewContent}>
 						<article className={style.article}>
+							<p className={style.starWrapper}>
+								{generateStars(review.num_stars)}
+							</p>
 							<h2>{review.title}...</h2>
 							<p>“{review.content}”</p>
 							<p className={style.date}>
@@ -157,17 +166,20 @@ Tak for din anmeldse ${combinedFormData.name}.`
 				</section>
 			))}
 
-			{/* skriv en anmeldse */}
+			{/* skriv en anmeldelse */}
 			<ReviewSection
 				openReviewForm={openReviewForm}
 				closeReviewForm={closeReviewForm}
 				isReviewFormVisible={isReviewFormVisible}
-				handleMessage={handleSubmit((formData) => postReview(formData, userId))}
+				handleMessage={handleSubmit((formData) =>
+					postReview(formData, userId, selectedRating)
+				)}
 				reset={reset}
 				register={register}
 				errors={errors}
 				// message={message}
 				loginData={loginData}
+				handleRatingSelect={handleRatingSelect}
 			/>
 
 			{/* modal indhold */}
@@ -196,7 +208,7 @@ Tak for din anmeldse ${combinedFormData.name}.`
 
 			{/* ansatte */}
 			<section className={style.emloyeesWrapper}>
-				<h1 className={globalStyle.title}>Møn vores ansatte</h1>
+				<h1 className={globalStyle.title}>Mød vores ansatte</h1>
 				<div className={style.staffSection}>
 					<EmployeesCard employees={employeesData} />
 				</div>

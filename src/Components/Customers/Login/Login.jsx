@@ -169,7 +169,7 @@ export const Login = () => {
 						</div>
 						<div className={style.rightSite}>
 							<p className={style.logedInuser}>
-								Du er logget in som <span>{user}</span>
+								Du er logget ind som <span>{user}</span>
 							</p>
 							<LogoutButton handleLogout={handleLogout} />
 							<ChangePassword />

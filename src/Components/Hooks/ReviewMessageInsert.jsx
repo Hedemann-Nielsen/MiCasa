@@ -3,7 +3,13 @@ import { useSupabase } from "../../Providers/SupabaseProvider";
 export const useReviewsMessage = () => {
 	const { supabase } = useSupabase();
 
-	const insertReviewsMessage = async ({ name, title, comment, user_id }) => {
+	const insertReviewsMessage = async ({
+		name,
+		title,
+		comment,
+		user_id,
+		num_stars,
+	}) => {
 		try {
 			const { data, error } = await supabase
 				.from("reviews")
@@ -14,6 +20,7 @@ export const useReviewsMessage = () => {
 						name,
 						user_id,
 						is_active: true,
+						num_stars,
 					},
 				])
 				.select("*");

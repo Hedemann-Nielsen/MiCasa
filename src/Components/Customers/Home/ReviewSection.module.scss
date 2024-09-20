@@ -60,8 +60,13 @@
 				justify-content: space-between;
 				align-items: center;
 				margin-top: 10px;
-
-				label {
+				.stars {
+					display: flex;
+					margin-top: 11px;
+					font-size: 18px;
+				}
+				label,
+				p {
 					@include text;
 					color: #fff;
 					display: flex;

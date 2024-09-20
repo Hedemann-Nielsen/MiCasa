@@ -1,7 +1,9 @@
+import { RatingStars } from "./StarRating/RatingStars.jsx";
 import { IoCloseSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 import globalStyle from "../../../Styles/GlobalStyles.module.scss";
+import { useState } from "react";
 import style from "./ReviewSection.module.scss";
 
 export const ReviewSection = ({
@@ -14,6 +16,7 @@ export const ReviewSection = ({
 	errors,
 	message,
 	loginData,
+	handleRatingSelect,
 }) => {
 	return (
 		<section className={style.writeReview}>
@@ -34,8 +37,10 @@ export const ReviewSection = ({
 							<IoCloseSharp />
 						</div>
 						<div className={style.inputWrapper}>
-							<label htmlFor="stars"></label>
-							<p>Stjerner</p>
+							<p>Din rating</p>
+							<div className={style.stars}>
+								<RatingStars onRatingSelect={handleRatingSelect} />{" "}
+							</div>
 						</div>
 						<div className={style.inputWrapper}>
 							<label htmlFor="name">Dit navn:</label>
