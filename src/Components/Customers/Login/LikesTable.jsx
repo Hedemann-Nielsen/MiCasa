@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import style from "./LikesTable.module.scss";
 
 export const LikesTable = ({ userfavoritsData, handleDeleteLike }) => {
+	console.log(userfavoritsData);
+
 	return (
 		<table className={style.commentsTable}>
 			<thead>
@@ -15,7 +17,7 @@ export const LikesTable = ({ userfavoritsData, handleDeleteLike }) => {
 				{userfavoritsData.map((favorit, index) => (
 					<tr key={index}>
 						<td>
-							<Link to={`/til-salg/${favorit?.estate?.id}`}>
+							<Link to={`/til-salg/${favorit?.estate_id}`}>
 								{favorit.estates.address}
 							</Link>
 						</td>

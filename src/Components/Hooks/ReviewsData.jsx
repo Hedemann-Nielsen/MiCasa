@@ -10,7 +10,7 @@ export const useReviewsData = () => {
 			try {
 				if (supabase) {
 					const { data, error } = await supabase
-						.from("reviews") //henter fra tabellen estates
+						.from("reviews") //henter fra tabellen reviews
 						.select("*");
 					if (error) {
 						console.error(

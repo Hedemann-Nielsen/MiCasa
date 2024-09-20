@@ -8,7 +8,6 @@ export const ContactForm = ({
 	handleSendMessage,
 	register,
 	errors,
-	reset,
 	message,
 }) => {
 	return (

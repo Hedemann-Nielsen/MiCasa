@@ -137,10 +137,11 @@ export const Footer = () => {
 						<div className={globalStyle.modalContent}>
 							<h2 className={globalStyle.title}>Tak for din tilmelding</h2>
 							<p className={globalStyle.text}>Du er nu tilmeldt nyhedsbrevet</p>
-
-							<button onClick={closeModal} className={globalStyle.styledBtn}>
-								Luk
-							</button>
+							<span className={globalStyle.btnWrapper}>
+								<button onClick={closeModal} className={globalStyle.styledBtn}>
+									Luk
+								</button>
+							</span>
 						</div>
 					</Modal>
 				</section>

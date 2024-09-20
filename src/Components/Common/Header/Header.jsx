@@ -109,7 +109,7 @@ export const Header = () => {
 					</nav>
 					{loginData.loginData ? (
 						<div className={style.loginName}>
-							<p>Du er logget ind som {userName}</p>
+							<p>Du er logget ind som{userName}</p>
 						</div>
 					) : (
 						<span></span>

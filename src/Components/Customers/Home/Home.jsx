@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { EstateCard } from "../EstateCards/EstateCard.jsx";
 import { useEstateData } from "../../Hooks/EstateData.jsx";
-import { useEstateImagesRelData } from "../../Hooks/EstateImagesRelData.jsx";
+import { useEstateImageRelData } from "../../Hooks/EstateImageRelData.jsx";
 import { useReviewsData } from "../../Hooks/ReviewsData";
 import { formatDate } from "../../Utils/DateUtils.jsx";
 import { SlideShow } from "./SlideShow.jsx";
@@ -21,7 +21,7 @@ import globalStyle from "../../../Styles/GlobalStyles.module.scss";
 export const Home = () => {
 	const [isReviewFormVisible, setReviewFormVisible] = useState(false);
 	const estateData = useEstateData();
-	const estateImages = useEstateImagesRelData();
+	const estateImages = useEstateImageRelData();
 	const reviewsData = useReviewsData();
 	const {
 		register,

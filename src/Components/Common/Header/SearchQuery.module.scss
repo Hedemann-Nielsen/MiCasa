@@ -1,0 +1,56 @@
+.searchResults {
+	position: absolute;
+	width: 300px;
+	right: 55px;
+	padding-top: 1px;
+	border: none;
+	background-color: #fff;
+
+	ul {
+		margin: 0;
+		// padding: 5px;
+		flex-direction: column;
+		li {
+			text-align: left;
+		}
+		.resultLine {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			text-align: left;
+
+			a {
+				font-size: 12px;
+				font-weight: 400;
+				font-family: "Poppins", sans-serif;
+				color: black;
+				margin: 0;
+				padding: 0;
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	p {
+		font-size: 12px;
+		font-weight: 400;
+		font-family: "Poppins", sans-serif;
+		color: black;
+		text-align: left;
+		padding: 5px;
+	}
+}
+
+//desktop
+@media (max-width: 768px) {
+	.searchResults {
+		width: 90%;
+		right: 2px;
+		z-index: 5;
+		ul {
+			.resultLine {
+			}
+		}
+	}
+}

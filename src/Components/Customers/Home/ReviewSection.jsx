@@ -3,7 +3,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 import globalStyle from "../../../Styles/GlobalStyles.module.scss";
-import { useState } from "react";
+
 import style from "./ReviewSection.module.scss";
 
 export const ReviewSection = ({
@@ -11,10 +11,8 @@ export const ReviewSection = ({
 	closeReviewForm,
 	isReviewFormVisible,
 	handleMessage,
-	reset,
 	register,
 	errors,
-	message,
 	loginData,
 	handleRatingSelect,
 }) => {

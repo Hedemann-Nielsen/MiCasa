@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSupabase } from "../../Providers/SupabaseProvider";
 
-export const useEstateImagesRelData = () => {
+export const useEstateImageRelData = () => {
 	const { supabase } = useSupabase();
-	const [estateImagesRelData, setEstateImagesRelData] = useState([]);
+	const [EstateImageRelData, setEstateImageRelData] = useState([]);
 
 	useEffect(() => {
-		const getEstateImagesRelData = async () => {
+		const getEstateImageRelData = async () => {
 			try {
 				if (supabase) {
 					const { data, error } = await supabase
@@ -20,7 +20,7 @@ export const useEstateImagesRelData = () => {
 							error.message
 						);
 					} else {
-						setEstateImagesRelData(data);
+						setEstateImageRelData(data);
 					}
 				}
 			} catch (error) {
@@ -28,8 +28,8 @@ export const useEstateImagesRelData = () => {
 			}
 		};
 
-		getEstateImagesRelData();
+		getEstateImageRelData();
 	}, [supabase]);
 
-	return estateImagesRelData;
+	return EstateImageRelData;
 };

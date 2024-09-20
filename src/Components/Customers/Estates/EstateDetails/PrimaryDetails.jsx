@@ -19,7 +19,7 @@ export const PrimaryDetails = ({
 	formattedPayoutPrice,
 	formattedCostPriceWDigits,
 	isLiked,
-	estateImages,
+	estateImage,
 }) => {
 	const [photomodalIsOpen, setPhotoModalIsOpen] = useState(false);
 	const [floorPlanModalIsOpen, setFloorPlanModalIsOpen] = useState(false);
@@ -123,11 +123,12 @@ export const PrimaryDetails = ({
 				photomodalIsOpen={photomodalIsOpen}
 				closePhotoModal={closePhotoModal}
 				imageUrl={
-					estateImages.find((img) => img.estate_id === estate.id)?.images
+					estateImage.find((img) => img.estate_id === estate.id)?.images
 						?.image_url || ""
 				}
 				estateAddress={estate.address}
 			/>
+
 			{/* modal indhold til plantegning icon*/}
 			<ModalForFloorPlan
 				isOpen={floorPlanModalIsOpen}

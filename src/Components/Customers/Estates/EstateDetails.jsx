@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { PageWrapper } from "../../Common/Wrappers/PageWrapper";
 import { useParams } from "react-router-dom";
 import { useEstateData } from "../../Hooks/EstateData.jsx";
-import { useEstateImagesRelData } from "../../Hooks/EstateImagesRelData.jsx";
+import { useEstateImageRelData } from "../../Hooks/EstateImageRelData.jsx";
 import { useAuth } from "../../../Providers/AuthProvider";
 import { useSupabase } from "../../../Providers/SupabaseProvider.jsx";
 import { ContactCard } from "./EstateDetails/ContactCard.jsx";
@@ -19,18 +19,14 @@ export const EstateDetails = () => {
 	const userId = loginData?.user?.id;
 	const { supabase } = useSupabase();
 	const estateData = useEstateData();
-	const estateImages = useEstateImagesRelData();
+	const estateImage = useEstateImageRelData();
+
 	const favoritsData = useFavoritsData(userId, estateId);
 
 	const [isLiked, setIsLiked] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
 	const [count, setCount] = useState();
 	const estate = estateData.find((estate) => estate.id === parseInt(estate_id));
-
-	useEffect(() => {
-		// Scroll til toppen ved indlæsning
-		window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-	}, []);
 
 	//funktion der overvåger om der er en bruger der er logget ind.
 	useEffect(() => {
@@ -137,7 +133,7 @@ export const EstateDetails = () => {
 
 	//Funktion til at finde image relateret til hver estate
 	const getImageForEstate = (estateId) => {
-		const imageRel = estateImages.find((image) => image.estate_id === estateId);
+		const imageRel = estateImage.find((image) => image.estate_id === estateId);
 		return imageRel?.images?.image_url || ""; // Returnere billede eller en tom text streng
 	};
 
@@ -167,7 +163,7 @@ export const EstateDetails = () => {
 						formattedPayoutPrice={formattedCostPrice}
 						formattedCostPriceWDigits={formattedCostPriceWDigits}
 						isLiked={isLiked}
-						estateImages={estateImages}
+						estateImage={estateImage}
 					/>
 
 					<FactsforEstate

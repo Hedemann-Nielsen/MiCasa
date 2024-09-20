@@ -9,8 +9,8 @@ export const useUserFavoritsData = ({ userId }) => {
 		try {
 			if (supabase) {
 				const { data, error } = await supabase
-					.from("favorites") //henter fra tabellen estates
-					.select("*, estates(address, id)")
+					.from("favorites") //henter fra tabellen favorites
+					.select("*, estates(address, id)") //hente alle kolonner samt address og id i tabellen estates som favorits har en relation til
 					.eq("user_id", userId);
 
 				if (error) {

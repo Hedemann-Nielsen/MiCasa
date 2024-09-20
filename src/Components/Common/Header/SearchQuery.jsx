@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import style from "./MobilHeader.module.scss";
+// import style from "./MobilHeader.module.scss";
+import style from "./SearchQuery.module.scss";
 
 export const SearchQuery = ({ searchQuery, filteredEstates }) => {
 	return (

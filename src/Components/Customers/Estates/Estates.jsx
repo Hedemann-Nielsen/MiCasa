@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { PageWrapper } from "../../Common/Wrappers/PageWrapper";
 import { EstateCard } from "../EstateCards/EstateCard.jsx";
 import { useEstateData } from "../../Hooks/EstateData.jsx";
-import { useEstateImagesRelData } from "../../Hooks/EstateImagesRelData.jsx";
+import { useEstateImageRelData } from "../../Hooks/EstateImageRelData.jsx";
 import { useEstateTypeData } from "../../Hooks/EstateTypesData.jsx";
 
 import globalStyle from "../../../Styles/Globalstyles.module.scss";
@@ -10,7 +10,7 @@ import style from "./Estates.module.scss";
 
 export const Estates = () => {
 	const estateData = useEstateData();
-	const estateImages = useEstateImagesRelData();
+	const estateImages = useEstateImageRelData();
 	const estateType = useEstateTypeData();
 	const [selectedType, setSelectedType] = useState();
 	const [selectedSort, setSelectedSort] = useState("");

@@ -10,8 +10,8 @@ export const useEmployeesDatas = () => {
 			try {
 				if (supabase) {
 					const { data, error } = await supabase
-						.from("employees") //henter fra tabellen categories
-						.select("*"); // henter  title kolonnen
+						.from("employees") //henter fra tabellen employees
+						.select("*"); // henter alle kolonnen
 					if (error) {
 						console.error(
 							"Fejl ved hentning af data fra Employees:",
