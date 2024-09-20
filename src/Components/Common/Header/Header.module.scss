@@ -30,8 +30,8 @@
 					padding: 0 16px;
 					a {
 						text-transform: capitalize;
-						color: $BG-col !important;
 						@include subtitle3;
+						color: #fff !important;
 						&:hover {
 							color: $ROSE-col !important;
 						}

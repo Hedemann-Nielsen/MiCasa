@@ -114,6 +114,23 @@ export const MobilHeader = () => {
 									</li>
 								);
 							})}
+						<li>
+							{loginData ? (
+								<NavLink
+									to="/login"
+									className={style.navText}
+									onClick={handleMenuClick}>
+									Min side
+								</NavLink>
+							) : (
+								<NavLink
+									to="/login"
+									className={style.navText}
+									onClick={handleMenuClick}>
+									Login
+								</NavLink>
+							)}
+						</li>
 					</ul>
 				</div>
 			</section>

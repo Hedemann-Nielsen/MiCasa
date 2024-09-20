@@ -14,9 +14,4 @@ export const MenuData = [
 		title: "kontakt",
 		url: "/contact",
 	},
-	{
-		id: 4,
-		title: "login",
-		url: "/login",
-	},
 ];

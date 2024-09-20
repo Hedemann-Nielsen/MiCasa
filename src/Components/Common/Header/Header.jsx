@@ -65,6 +65,26 @@ export const Header = () => {
 										</li>
 									);
 								})}
+							<li className={style.menuLink}>
+								{loginData ? (
+									<NavLink
+										to="/login"
+										className={({ isActive }) =>
+											isActive ? style.activeLink : ""
+										}>
+										Min side
+									</NavLink>
+								) : (
+									<NavLink
+										to="/login"
+										className={({ isActive }) =>
+											isActive ? style.activeLink : ""
+										}>
+										Login
+									</NavLink>
+								)}
+							</li>
+
 							<div className={style.searchWrapper}>
 								<div className={style.searchbarContent}>
 									<input
