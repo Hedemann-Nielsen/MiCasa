@@ -89,11 +89,13 @@
 			opacity: 1;
 		}
 	}
+
+	//styling til FactsForEstate
 	.secDetails {
 		margin-top: 84px;
 		display: grid;
 		grid-template-columns: 1fr 1fr 1fr;
-		// gap: 126px;
+		gap: 126px;
 		.detailsList {
 			display: flex;
 			justify-content: space-between;
@@ -155,6 +157,7 @@
 		}
 		.secDetails {
 			grid-template-columns: 1fr;
+			gap: 0;
 			.detailsList {
 				margin: 5px 0;
 			}
