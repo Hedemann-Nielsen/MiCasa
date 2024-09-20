@@ -162,6 +162,18 @@ button {
 		outline: none;
 	}
 }
+select {
+	background-color: #fff;
+	color: $BLACK-col;
+	border: none;
+	appearance: none; /* fjerner default browser styling */
+	-moz-appearance: none; /* fjerner firefox grå baggrund*/
+	-webkit-appearance: none; /* til WebKit browsers */
+}
+
+select:focus {
+	outline: none;
+}
 
 .iconWrapper {
 	width: 84px;
