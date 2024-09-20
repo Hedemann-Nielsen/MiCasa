@@ -7,7 +7,7 @@ import { useEstateData } from "../../Hooks/EstateData.jsx";
 import { SearchQuery } from "./searchQuery.jsx";
 import { useAuth } from "../../../Providers/AuthProvider.jsx";
 
-import logo from "../../../assets/logo/Logo.png";
+import logo from "../../../assets/logo/Logo.webp";
 import { FaSearch } from "react-icons/fa";
 
 import style from "./MobilHeader.module.scss";

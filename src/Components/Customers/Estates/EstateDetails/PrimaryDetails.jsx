@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { ModalForPhoto, ModalForFloorPlan, ModalForLocation } from "../Modals";
 import dayjs from "dayjs";
 
-import iconFloorPlan from "../../../../assets/Icons/floorPlan.png";
-import iconGallery from "../../../../assets/Icons/gallery.png";
-import iconLocation from "../../../../assets/Icons/location.png";
-import iconLike from "../../../../assets/Icons/like.png";
+import iconFloorPlan from "../../../../assets/Icons/floorPlan.webp";
+import iconGallery from "../../../../assets/Icons/gallery.webp";
+import iconLocation from "../../../../assets/Icons/location.webp";
+import iconLike from "../../../../assets/Icons/like.webp";
 
 import globalStyle from "../../../../Styles/Globalstyles.module.scss";
 import style from "../EstateDetails.module.scss";

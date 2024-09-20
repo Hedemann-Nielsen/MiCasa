@@ -45,6 +45,7 @@ export const ModalForLocation = ({ isOpen, closeModal, mapsUrl }) => (
 				<IoCloseSharp className={globalStyle.closeIcon} />
 			</div>
 			<iframe
+				rel="preconnect"
 				width="600"
 				height="450"
 				style={{ border: 0 }}
