@@ -84,13 +84,10 @@ export const Home = () => {
 			user_id: userId,
 			num_stars: selectedRating,
 		};
-		console.log(combinedFormData);
 
 		//sender data til databasen
 		const response = await insertReviewsMessage(combinedFormData);
 		if (response.success) {
-			// console.log("anmeldse er sendt?");
-
 			setModalMessage1(
 				`
 Tak for din anmeldse ${combinedFormData?.name}.`

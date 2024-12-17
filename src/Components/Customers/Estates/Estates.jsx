@@ -4,6 +4,7 @@ import { EstateCard } from "../EstateCards/EstateCard.jsx";
 import { useEstateData } from "../../Hooks/EstateData.jsx";
 import { useEstateImageRelData } from "../../Hooks/EstateImageRelData.jsx";
 import { useEstateTypeData } from "../../Hooks/EstateTypesData.jsx";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 import globalStyle from "../../../Styles/Globalstyles.module.scss";
 import style from "./Estates.module.scss";
@@ -91,7 +92,7 @@ export const Estates = () => {
 								);
 							})}
 					</select>
-
+					<IoMdArrowDropdown className={style.arrowIcon} />
 					<select
 						name=""
 						id=""
